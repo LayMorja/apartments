@@ -1,0 +1,93 @@
+.callback {
+  @extend %fl-r-ct;
+
+  &__phone {
+    @extend %fl-r-ct;
+    color: var(--clr-purple);
+    font-size: rem(14);
+    font-weight: 600;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+
+    &:not(:last-child) {
+      margin-right: rem(20);
+    }
+
+    &::before {
+      content: '';
+      flex: 0 0 rem(22);
+      width: rem(22);
+      height: rem(22);
+      @extend %bg-con;
+      background-image: url('@img/icons/whatsapp.svg');
+      margin-right: rem(9);
+      transition: transform 0.32s ease-in-out;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        &::before {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  &__modal {
+    padding: rem(23) rem(29);
+    @extend %fl-a-ct;
+    text-align: center;
+    border-radius: rem(30);
+    border: 1px solid var(--clr-purple);
+    transition: all 0.32s ease-in-out;
+
+    span {
+      color: var(--clr-purple);
+      font-size: rem(10);
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.32s ease-in-out;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: var(--clr-purple);
+        box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.15);
+
+        span {
+          color: var(--clr-bg);
+        }
+      }
+    }
+  }
+
+  &__icon {
+    display: none;
+    flex: 0 0 rem(35);
+    width: rem(35);
+    height: rem(35);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  //== 1200px ==//
+  @media (max-width: $note-m) {
+    &__phone:not(:last-child) {
+      margin-right: 0;
+      margin-bottom: rem(10);
+    }
+  }
+
+  //== 768px ==//
+  @media (max-width: $mb) {
+    &__phone:not(:last-child) {
+      margin-right: rem(20);
+      margin-bottom: 0;
+    }
+  }
+}

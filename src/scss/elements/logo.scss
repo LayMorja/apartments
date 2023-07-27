@@ -1,0 +1,16 @@
+.logo {
+  max-width: rem(141);
+
+  img {
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  @media (max-width: em(639.98)) {
+    max-width: rem(120);
+  }
+  //== 440px ==//
+  @media (max-width: $mb-s) {
+    max-width: rem(100);
+  }
+}

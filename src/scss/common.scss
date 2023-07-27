@@ -1,0 +1,56 @@
+[hidden] {
+  display: none;
+}
+
+@keyframes menu07-bar01 {
+  0% {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  50% {
+    transform: translateY(6px) rotate(0);
+  }
+
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+@keyframes menu07-bar03 {
+  0% {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  50% {
+    transform: translateY(-6px) rotate(0);
+  }
+
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+@keyframes active-menu07-bar01 {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+
+  50% {
+    transform: translateY(6px) rotate(0);
+  }
+
+  100% {
+    transform: translateY(6px) rotate(45deg);
+  }
+}
+@keyframes active-menu07-bar03 {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+
+  50% {
+    transform: translateY(-6px) rotate(0);
+  }
+
+  100% {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+}
