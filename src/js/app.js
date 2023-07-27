@@ -174,8 +174,8 @@ import * as flsForms from './files/forms/forms.js';
 Примеры по работе с библиотекой: https://wowjs.uk/
 
 */
-// import "./libs/aos.js";
-// import "./libs/wow.js";ё
+import './libs/aos.js';
+// import "./libs/wow.js";
 
 // Функции работы скроллом
 import * as flsScroll from './files/scroll/scroll.js';
