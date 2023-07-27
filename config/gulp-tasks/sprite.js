@@ -14,7 +14,7 @@ export const sprite = () => {
       svgSprite({
         mode: {
           symbol: {
-            sprite: '../img/icons/icons.svg',
+            sprite: '../img/svgicons/icons.svg',
           },
         },
         shape: {
