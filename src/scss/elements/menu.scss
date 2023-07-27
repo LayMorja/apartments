@@ -52,6 +52,7 @@
       position: fixed;
       overflow: auto;
       max-height: calc(100vh - rem(28));
+      min-width: rem(320);
       z-index: 151;
       top: rem(14);
       margin-bottom: rem(14);
@@ -95,12 +96,12 @@
 }
 
 .menu__close {
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: rem(20);
-  display: flex;
   align-items: center;
   justify-content: center;
 
@@ -115,6 +116,11 @@
     margin-left: rem(11);
     margin-right: rem(8);
   }
+
+  //== 768px ==//
+  @media (max-width: $mb) {
+    display: flex;
+  }
 }
 
 //====================================================================================================
@@ -126,7 +132,7 @@
     width: rem(22);
     height: rem(14);
     cursor: pointer;
-    z-index: 151;
+    z-index: 150;
     span,
     &::before,
     &::after {

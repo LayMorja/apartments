@@ -35,30 +35,12 @@
 
   &__modal {
     padding: rem(23) rem(29);
-    @extend %fl-a-ct;
-    text-align: center;
-    border-radius: rem(30);
-    border: 1px solid var(--clr-purple);
-    transition: all 0.32s ease-in-out;
-
+    border-width: rem(1);
     span {
       color: var(--clr-purple);
       font-size: rem(10);
       font-weight: 700;
       letter-spacing: 1.5px;
-      text-transform: uppercase;
-      transition: color 0.32s ease-in-out;
-    }
-
-    @media (any-hover: hover) {
-      &:hover {
-        background-color: var(--clr-purple);
-        box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.15);
-
-        span {
-          color: var(--clr-bg);
-        }
-      }
     }
   }
 
