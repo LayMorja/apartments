@@ -54,3 +54,32 @@
     transform: translateY(-6px) rotate(-45deg);
   }
 }
+
+.title {
+  color: var(--clr-title);
+  text-align: center;
+  font-size: rem(50);
+  font-weight: 600;
+  line-height: 120%;
+
+  &:not(:last-child) {
+    margin-bottom: rem(45);
+  }
+
+  //== 992px ==//
+  @media (max-width: $tb) {
+    font-size: rem(40);
+  }
+  //== 576px ==//
+  @media (max-width: $mb-m) {
+    font-size: rem(36);
+  }
+  //== 440px ==//
+  @media (max-width: $mb-s) {
+    font-size: rem(30);
+
+    &:not(:last-child) {
+      margin-bottom: rem(20);
+    }
+  }
+}

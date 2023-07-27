@@ -92,6 +92,9 @@ body {
 } @else {
   .container {
     margin: 0 auto;
+    &.container--xl {
+      max-width: rem(1710);
+    }
     @if ($maxWidthContainer > 0) {
       max-width: rem($maxWidthContainer);
       box-sizing: content-box;
@@ -132,3 +135,4 @@ body {
 
 // Подключение крупных блоков
 @import 'blocks/hero';
+@import 'blocks/benefits';

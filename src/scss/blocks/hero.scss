@@ -4,6 +4,19 @@
 
     &:not(:last-child) {
       margin-bottom: rem(135);
+
+      //== 992px ==//
+      @media (max-width: $tb) {
+        margin-bottom: rem(100);
+      }
+      //== 576px ==//
+      @media (max-width: $mb-m) {
+        margin-bottom: rem(90);
+      }
+      //== 440px ==//
+      @media (max-width: $mb-s) {
+        margin-bottom: rem(70);
+      }
     }
   }
 }
@@ -201,6 +214,8 @@
   }
 
   &__cta {
+    padding: rem(29) rem(33);
+    border-radius: rem(35);
     border-width: rem(1);
     &:not(:last-child) {
       margin-right: rem(28);

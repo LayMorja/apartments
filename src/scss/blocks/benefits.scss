@@ -1,0 +1,129 @@
+.page {
+  &__benefits {
+    &:not(:last-child) {
+      margin-bottom: rem(115);
+    }
+  }
+}
+.benefits {
+  &__container {
+  }
+
+  &__title {
+  }
+
+  &__row {
+    @extend %fl-r-st;
+
+    //== 768px ==//
+    @media (max-width: $mb) {
+      flex-wrap: wrap;
+      align-content: center;
+      justify-content: center;
+      row-gap: rem(30);
+    }
+    //== 576px ==//
+    @media (max-width: $mb-m) {
+      flex-direction: column;
+      align-items: center;
+      row-gap: 0;
+    }
+  }
+
+  &__item {
+    @extend %fl-c-ct;
+    width: calc(100% / 3 - rem(20));
+    flex-shrink: 0;
+    font-size: rem(18);
+    line-height: 120%;
+    text-align: center;
+
+    &:not(:last-child) {
+      margin-right: rem(20);
+    }
+
+    //== 992px ==//
+    @media (max-width: $tb) {
+      font-size: rem(16);
+    }
+    //== 768px ==//
+    @media (max-width: $mb) {
+      width: auto;
+    }
+    //== 576px ==//
+    @media (max-width: $mb-m) {
+      &:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: rem(22);
+      }
+    }
+    //== 440px ==//
+    @media (max-width: $mb-s) {
+      font-size: rem(14);
+    }
+  }
+
+  &__item-icon {
+    @extend %fl-a-ct;
+    position: relative;
+    padding: rem(5);
+    border-radius: rem(20);
+    background-color: var(--c);
+    flex-basis: rem(111);
+    width: rem(111);
+    height: rem(111);
+
+    svg {
+      fill: #fff;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: rem(35);
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: rem(-8);
+      left: 50%;
+      width: rem(17);
+      height: rem(17);
+      border-radius: 50%;
+      border: rem(2) solid #fff;
+      background-color: var(--c);
+      transform: translateX(-50%);
+    }
+
+    //== 440px ==//
+    @media (max-width: $mb-s) {
+      flex-basis: rem(62);
+      width: rem(62);
+      height: rem(62);
+      border-radius: rem(14);
+
+      &:not(:last-child) {
+        margin-bottom: rem(20);
+      }
+
+      svg {
+        width: rem(28);
+        height: rem(28);
+      }
+    }
+  }
+
+  &__item-title {
+    color: var(--clr-purple);
+    text-align: center;
+    font-weight: 700;
+    line-height: 120%;
+
+    &:not(:last-child) {
+      margin-bottom: rem(10);
+    }
+  }
+
+  &__item-descr {
+    color: var(--clr-main);
+  }
+}
