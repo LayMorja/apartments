@@ -33,6 +33,7 @@ $containerPadding: 30;
 
 // Ширина срабатывания первого брейкпоинта
 $containerWidth: $maxWidthContainer + $containerPadding;
+$currerntWidth: $containerWidth + 40;
 
 // Брейк-поинты
 $pc: em($containerWidth);
@@ -100,9 +101,11 @@ body {
     }
     @media (max-width: $note-m) {
       max-width: rem(970);
+      $currerntWidth: 990;
     }
     @media (max-width: $tb) {
       max-width: rem(750);
+      $currerntWidth: 770;
     }
     @media (max-width: $mb) {
       max-width: none;
