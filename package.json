@@ -65,7 +65,7 @@
     "webpack-stream": "latest"
   },
   "dependencies": {
-    "aos": "latest",
+    "aos": "^2.3.4",
     "inputmask": "latest",
     "lightgallery": "latest",
     "nouislider": "latest",
