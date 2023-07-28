@@ -1,3 +1,4 @@
+import concat from 'gulp-concat';
 import ifPlugin from 'gulp-if';
 import newer from 'gulp-newer';
 import notify from 'gulp-notify';
@@ -14,4 +15,5 @@ export const plugins = {
   plumber,
   rename,
   replace,
+  concat,
 };
