@@ -20,6 +20,7 @@ import { gitignore } from './config/gulp-tasks/gitignore.js';
 import { html } from './config/gulp-tasks/html.js';
 import { images } from './config/gulp-tasks/images.js';
 import { jsDev } from './config/gulp-tasks/js-dev.js';
+import { jsVendors } from './config/gulp-tasks/js-vendors.js';
 import { js } from './config/gulp-tasks/js.js';
 import { reset } from './config/gulp-tasks/reset.js';
 import { resources } from './config/gulp-tasks/resources.js';
@@ -52,6 +53,7 @@ export { build };
 export { deployFTP };
 export { deployZIP };
 export { vendors };
+export { jsVendors };
 
 const development = gulp.series(devTasks);
 const build = gulp.series(buildTasks);
