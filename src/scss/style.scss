@@ -18,7 +18,7 @@ $fontFamily: 'AvenirNext', sans-serif;
 $fontSize: rem(18); // где 14(px) - размер шрифта по умолчанию из макета
 
 // Основные цвета
-$mainColor: #000; // Цвет шрифта по умолчанию
+$mainColor: var(--clr-main); // Цвет шрифта по умолчанию
 
 // НАСТРОЙКИ ===============================================================================================================================================================================================================================================================================================
 // Минимальная ширина страницы
@@ -104,11 +104,9 @@ body {
     }
     @media (max-width: $note-m) {
       max-width: rem(970);
-      $currerntWidth: 990;
     }
     @media (max-width: $tb) {
       max-width: rem(750);
-      $currerntWidth: 770;
     }
     @media (max-width: $mb) {
       max-width: none;
@@ -128,6 +126,7 @@ body {
 @import 'elements/logo';
 @import 'elements/menu';
 @import 'elements/callback';
+@import 'elements/pagging';
 
 // Подключение стилей отдельных блоков
 @import 'header';
@@ -136,3 +135,4 @@ body {
 // Подключение крупных блоков
 @import 'blocks/hero';
 @import 'blocks/benefits';
+@import 'blocks/works';

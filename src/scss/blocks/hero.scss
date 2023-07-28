@@ -22,21 +22,32 @@
 }
 .hero {
   &__container {
+    position: relative;
     padding-top: rem(70);
     padding-bottom: rem(90);
-    position: relative;
     @extend %fl-a-ct;
     flex-direction: column;
     min-height: calc(100vh - var(--header-height) - rem(160));
     border-radius: rem(80);
     @extend %bg-cov;
     background-attachment: fixed;
-    background-position: 30% center;
     background-image: url('@img/hero/background.png');
+    background-position: 30% center;
     text-align: center;
 
     @media (max-width: em(639.98)) {
       border-radius: 0;
+    }
+
+    //== 576px ==//
+    @media (max-width: $mb-m) {
+      background-image: url('@img/hero/background--mobile.png');
+    }
+
+    //== 768px ==//
+    @media (max-width: $mb) {
+      padding-top: rem(70);
+      padding-bottom: rem(90);
     }
   }
   &__decor {
@@ -123,6 +134,7 @@
     font-weight: 600;
     line-height: 120%;
     text-transform: uppercase;
+    color: var(--clr-black);
 
     &:not(:last-child) {
       margin-bottom: em(18, 60);
@@ -178,6 +190,7 @@
     margin: 0 auto;
     font-size: rem(22);
     line-height: 120%;
+    color: var(--clr-black);
 
     &:not(:last-child) {
       margin-bottom: rem(40);
