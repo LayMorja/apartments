@@ -24,6 +24,7 @@
     "gulp": "latest",
     "gulp-autoprefixer": "latest",
     "gulp-clean-css": "latest",
+    "gulp-concat": "^2.6.1",
     "gulp-fonter-fix": "latest",
     "gulp-group-css-media-queries": "latest",
     "gulp-htmlmin": "latest",
@@ -41,6 +42,7 @@
     "gulp-ttf2woff": "latest",
     "gulp-ttf2woff2": "latest",
     "gulp-typograf": "latest",
+    "gulp-uglify-es": "^3.0.0",
     "gulp-util": "latest",
     "gulp-version-number": "latest",
     "gulp-webp": "latest",
@@ -67,6 +69,7 @@
   "dependencies": {
     "aos": "^2.3.4",
     "inputmask": "latest",
+    "js-datepicker": "^5.18.2",
     "lightgallery": "latest",
     "nouislider": "latest",
     "simplebar": "latest",
