@@ -1,5 +1,14 @@
 .page {
   &__works {
+    &:not(:last-child) {
+      margin-bottom: rem(130);
+    }
+    //== 576px ==//
+    @media (max-width: $mb-m) {
+      &:not(:last-child) {
+        margin-bottom: rem(90);
+      }
+    }
   }
 }
 .variants {
@@ -145,6 +154,11 @@
     .swiper-button.swiper-button-next {
       right: rem(25);
     }
+
+    //== 440px ==//
+    @media (max-width: $mb-s) {
+      height: rem(200);
+    }
   }
 
   &__wrapper {
@@ -164,6 +178,11 @@
   &__content {
     padding: rem(25) rem(24);
     transition: background-color 0.32s ease-in-out;
+
+    //== 1200px ==//
+    @media (max-width: $note-m) {
+      padding: rem(14);
+    }
   }
 
   &__title {
@@ -197,10 +216,10 @@
       &::after {
         content: '2';
         position: absolute;
-        top: rem(-4);
+        top: rem(-6);
         right: rem(-9);
         text-align: center;
-        padding: rem(1);
+        padding: rem(0.5);
         color: var(--clr-white);
         font-size: rem(5);
         font-weight: 700;
@@ -296,9 +315,24 @@
         border-bottom-color: transparent;
       }
     }
+    //== 1200px ==//
+    @media (max-width: $note-m) {
+      span {
+        letter-spacing: 0.6px;
+      }
+    }
   }
 
   &__cta {
     margin-left: rem(30);
+
+    //== 1200px ==//
+    @media (max-width: $note-m) {
+      margin-left: rem(20);
+      padding: rem(19) rem(17);
+      span {
+        letter-spacing: 0.4px;
+      }
+    }
   }
 }
