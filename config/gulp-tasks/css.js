@@ -1,7 +1,6 @@
 import autoprefixer from 'gulp-autoprefixer';
 import cleanCss from 'gulp-clean-css';
 import groupCssMediaQueries from 'gulp-group-css-media-queries';
-import webpcss from 'gulp-webpcss';
 
 export const css = () => {
   return app.gulp
@@ -23,18 +22,6 @@ export const css = () => {
           overrideBrowserslist: ['last 3 versions'],
           cascade: false,
         })
-      )
-    )
-    .pipe(
-      app.plugins.if(
-        app.isWebP,
-        app.plugins.if(
-          app.isBuild,
-          webpcss({
-            webpClass: '.webp',
-            noWebpClass: '.no-webp',
-          })
-        )
       )
     )
     .pipe(app.plugins.if(app.isBuild, cleanCss()))
