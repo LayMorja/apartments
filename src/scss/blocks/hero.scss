@@ -21,7 +21,22 @@
   }
 }
 .hero {
+  &__background {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('@img/hero/background.png');
+    background-attachment: fixed;
+  }
   &__container {
+    overflow: hidden;
     position: relative;
     padding-top: rem(70);
     padding-bottom: rem(90);
@@ -29,10 +44,6 @@
     flex-direction: column;
     min-height: calc(100vh - var(--header-height) - rem(160));
     border-radius: rem(80);
-    @extend %bg-cov;
-    background-attachment: fixed;
-    background-image: url('@img/hero/background.png');
-    background-position: 30% center;
     text-align: center;
 
     @media (max-width: em(639.98)) {
