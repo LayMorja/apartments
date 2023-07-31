@@ -75,6 +75,7 @@
     //== 576px ==//
     @media (max-width: $mb-m) {
       grid-template-columns: 1fr;
+      row-gap: rem(27);
     }
   }
 
@@ -119,6 +120,7 @@
   }
 
   &__slider {
+    border-radius: rem(30) rem(30) 0 0;
     position: relative;
     height: rem(285);
     @media (any-hover: hover) {
@@ -177,6 +179,7 @@
 
   &__content {
     padding: rem(25) rem(24);
+    border-radius: 0 0 rem(30) rem(30);
     transition: background-color 0.32s ease-in-out;
 
     //== 1200px ==//

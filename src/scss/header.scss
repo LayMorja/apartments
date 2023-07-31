@@ -34,15 +34,11 @@
     }
 
     @media (max-width: $note-m) {
-      $currerntWidth: 1010;
-      max-width: rem($currerntWidth);
-    }
-    @media (max-width: $tb) {
-      $currerntWidth: 810;
-      max-width: rem($currerntWidth);
+      max-width: calc(100% - rem(20));
     }
     //== 768px ==//
     @media (max-width: $mb) {
+      max-width: none;
       border-radius: 0;
     }
   }
