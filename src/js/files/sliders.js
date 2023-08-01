@@ -177,6 +177,11 @@ function initSliders() {
 			},
 			*/
       // События
+      on: {
+        click: function (swiper, event) {
+          swiper.slideTo(swiper.clickedIndex % 4, 800);
+        },
+      },
     });
   }
 }
