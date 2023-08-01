@@ -1,5 +1,15 @@
 .page {
   &__bonus {
+    &:not(:last-child) {
+      margin-bottom: rem(190);
+    }
+
+    //== 576px ==//
+    @media (max-width: $mb-m) {
+      &:not(:last-child) {
+        margin-bottom: rem(140);
+      }
+    }
   }
 }
 .bonus {

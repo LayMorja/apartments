@@ -18,7 +18,6 @@
     display: flex;
     width: 100%;
     @extend %bg-cov;
-    background-image: url('@img/callback/image-01.png');
     background-attachment: fixed;
     border-radius: rem(80);
 
@@ -80,7 +79,7 @@
   &__content {
     margin: rem(50);
     margin-top: rem(-37);
-    padding: rem(42) rem(40) rem(50) rem(52);
+    padding: rem(43) rem(54) rem(50);
     border-radius: rem(60);
     background: var(--clr-white);
     box-shadow: 0px 19px 23px 0px rgba(26, 61, 80, 0.06);
