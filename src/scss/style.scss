@@ -127,6 +127,7 @@ body {
 @import 'elements/menu';
 @import 'elements/callback';
 @import 'elements/pagging';
+@import 'elements/decor-image';
 
 // Подключение стилей отдельных блоков
 @import 'header';
@@ -139,3 +140,4 @@ body {
 @import 'blocks/free';
 @import 'blocks/callback';
 @import 'blocks/team';
+@import 'blocks/bonus';

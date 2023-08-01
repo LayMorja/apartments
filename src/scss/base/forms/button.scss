@@ -51,4 +51,24 @@
       }
     }
   }
+  &._fill {
+    background-color: var(--clr-purple);
+    border-color: var(--clr-purple);
+
+    span {
+      color: var(--clr-white);
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: transparent;
+        border-color: var(--clr-purple);
+        box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.15);
+
+        span {
+          color: var(--clr-purple);
+        }
+      }
+    }
+  }
 }
