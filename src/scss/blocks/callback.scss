@@ -1,5 +1,15 @@
 .page {
   &__callback {
+    &:not(:last-child) {
+      margin-bottom: rem(130);
+    }
+
+    //== 576px ==//
+    @media (max-width: $mb-m) {
+      &:not(:last-child) {
+        margin-bottom: rem(80);
+      }
+    }
   }
 }
 .callback {
