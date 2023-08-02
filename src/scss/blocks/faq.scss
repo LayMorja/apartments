@@ -1,0 +1,116 @@
+.page {
+  &__faq {
+  }
+}
+.faq {
+  &__container {
+  }
+
+  &__title {
+    &:not(:last-child) {
+      margin-bottom: rem(24);
+    }
+  }
+
+  &__header {
+    @extend %fl-c;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-bottom: rem(30);
+    }
+  }
+
+  &__link {
+    color: var(--clr-purple);
+    text-align: center;
+    font-size: rem(10);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+
+    &:link,
+    &:visited {
+      text-decoration-line: underline;
+    }
+    &:hover,
+    &:active {
+      text-decoration-line: none;
+    }
+  }
+
+  &__body {
+    @extend %fl-r-ct;
+  }
+
+  &__list {
+    flex: 0 0 rem(690);
+
+    &:not(:last-child) {
+      margin-right: rem(130);
+    }
+  }
+
+  &__list-item {
+    cursor: pointer;
+    @extend %fl-r-ctb;
+    padding: rem(20) rem(27);
+    border-radius: 6px;
+    border: 1px solid #d8ebf6;
+    background: var(--clr-white);
+    box-shadow: 0px 8px 12px 0px rgba(117, 132, 146, 0.06);
+    transition: all 0.32s ease-in-out;
+
+    color: var(--clr-black);
+    font-size: rem(16);
+    font-weight: 600;
+    letter-spacing: 2.4px;
+
+    &:not(:last-child) {
+      margin-bottom: rem(15);
+    }
+
+    span {
+      &:not(:last-child) {
+        margin-right: rem(15);
+      }
+    }
+
+    svg {
+      fill: #39b8fe;
+      transition: fill 0.32s ease-in-out;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: #39b8fe;
+        color: var(--clr-white);
+        svg {
+          fill: var(--clr-white);
+        }
+      }
+    }
+    &.faq__list-item--active {
+      background-color: #39b8fe;
+      color: var(--clr-white);
+      svg {
+        fill: var(--clr-white);
+      }
+    }
+  }
+
+  &__answers {
+    padding: rem(66) rem(59) rem(128);
+  }
+
+  &__answer {
+  }
+}
+.answer {
+  &__title {
+  }
+
+  &__body {
+    max-height: 0;
+  }
+}
