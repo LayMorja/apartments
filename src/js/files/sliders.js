@@ -8,7 +8,7 @@
 // При необходимости подключаем дополнительные модули слайдера, указывая их в {} через запятую
 // Пример: { Navigation, Autoplay }
 import Swiper from 'swiper';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 /*
 Основниые модули слайдера:
 Navigation, Pagination, Autoplay, 
@@ -180,6 +180,75 @@ function initSliders() {
       on: {
         click: function (swiper, event) {
           swiper.slideTo(swiper.clickedIndex % 4, 800);
+        },
+      },
+    });
+  }
+  if (document.querySelector('.reviews__slider')) {
+    // Указываем скласс нужного слайдера
+    // Создаем слайдер
+    new Swiper('.reviews__slider', {
+      // Указываем скласс нужного слайдера
+      // Подключаем модули слайдера
+      // для конкретного случая
+      modules: [Navigation, Pagination],
+      slidesPerView: 3,
+      spaceBetween: 20,
+      speed: 800,
+
+      //touchRatio: 0,
+      //simulateTouch: false,
+      loop: true,
+      preloadImages: false,
+      lazy: true,
+
+      /*
+			// Эффекты
+			effect: 'fade',
+			autoplay: {
+				delay: 3000,
+				disableOnInteraction: false,
+			},
+			*/
+
+      // Пагинация
+
+      pagination: {
+        el: '.reviews__pagination',
+        clickable: true,
+      },
+
+      // Скроллбар
+      /*
+			scrollbar: {
+				el: '.swiper-scrollbar',
+				draggable: true,
+			},
+			*/
+
+      // Кнопки "влево/вправо"
+      navigation: {
+        prevEl: '.reviews__button-prev',
+        nextEl: '.reviews__button-next',
+      },
+
+      // Брейкпоинты
+
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 10,
+        },
+        576: {
+          slidesPerView: 1.5,
+          spaceBetween: 15,
+        },
+        992: {
+          slidesPerView: 2,
+        },
+        1200: {
+          slidesPerView: 3,
+          spaceBetween: 20,
         },
       },
     });
