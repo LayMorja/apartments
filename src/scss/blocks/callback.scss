@@ -64,6 +64,16 @@
     }
     .callback--left & {
       margin-left: rem(150);
+
+      //== 1200px ==//
+      @media (max-width: $note-m) {
+        margin-left: rem(40);
+      }
+      //== 992px ==//
+      @media (max-width: $tb) {
+        margin-right: auto;
+        margin-left: auto;
+      }
     }
 
     //== 768px ==//
