@@ -59,7 +59,7 @@ flsFunctions.tabs();
 Документация по работе в шаблоне:
 Сниппет (HTML): pl (data-popup="")
 */
-// import './libs/popup.js'
+import './libs/popup.js';
 
 /*
 Модуль параллакса мышью
@@ -110,7 +110,7 @@ import './libs/datepicker-full.min.js';
 Документация плагина: https://github.com/RobinHerbots/inputmask
 Сниппет(HTML):
 */
-// import "./files/forms/inputmask.js";
+import './files/forms/inputmask.js';
 
 /* Модуль работы с ползунком */
 /*
