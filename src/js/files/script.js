@@ -35,3 +35,54 @@ if (isMobile.any()) {
     document.addEventListener('touchmove', handleTouchMove, false);
   })();
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const map = document.querySelector('#map');
+
+  const observerCb = function (entries, observer) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        ymaps.ready(function () {
+          var myMap = new ymaps.Map('map', {
+              center: [56.045168, 92.88421],
+              zoom: 16,
+            }),
+            // Создаём макет содержимого.
+            MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+              '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+            ),
+            myPlacemark = new ymaps.Placemark(
+              [56.045054, 92.888942],
+              {
+                hintContent: 'Наше расположение',
+                balloonContent: 'Красноярск, ул. Караульная 88, БЦ Дубль, оф.7-31',
+              },
+              {
+                // Опции.
+                // Необходимо указать данный тип макета.
+                iconLayout: 'default#image',
+                // Своё изображение иконки метки.
+                iconImageHref: 'img/icons/target.svg',
+                // Размеры метки.
+                iconImageSize: [67, 81],
+                // Смещение левого верхнего угла иконки относительно
+                // её "ножки" (точки привязки).
+                iconImageOffset: [-33, -85],
+              }
+            );
+
+          myMap.geoObjects.add(myPlacemark);
+        });
+
+        observer.unobserve(entry.target);
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(observerCb, {
+    root: null,
+    threshold: 0.2,
+  });
+
+  observer.observe(map);
+});
