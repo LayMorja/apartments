@@ -116,11 +116,6 @@
     top: 0;
     left: 0;
 
-    .ymaps-2-1-79-placemark-overlay.ymaps-2-1-79-user-selection-none {
-      z-index: 99999 !important;
-      filter: grayscale(0);
-    }
-
     &::after {
       content: '';
       position: absolute;

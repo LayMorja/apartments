@@ -1,38 +1,74 @@
 .checkbox {
-	position: relative;
-	&:not(:last-child) {
-		margin-bottom: em(5);
-	}
-	// .checkbox__input
-	&__input {
-		position: absolute;
-		width: 0;
-		height: 0;
-		opacity: 0;
-		&:focus + .checkbox__label:before {
-			box-shadow: 0 0 5px #000;
-		}
-		&:checked + .checkbox__label:before {
-			background: #000;
-		}
-	}
-	// .checkbox__label
-	&__label {
-		cursor: pointer;
-		display: inline-flex;
-		align-items: center;
-		position: relative;
-		gap: 10px;
-		&:before {
-			content: "";
-			align-self: flex-start;
-			flex: 0 0 20px;
-			width: 20px;
-			height: 20px;
-			border: 1px solid #a7a9ac;
-		}
-	}
-	// .checkbox__text
-	&__text {
-	}
+  position: relative;
+  margin-top: rem(35);
+
+  &:not(:last-child) {
+    margin-bottom: em(5);
+  }
+  // .checkbox__input
+  &__input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    &:focus + .checkbox__label:before {
+      box-shadow: 0 0 5px rgba(117, 132, 146, 0.16);
+    }
+    &:checked + .checkbox__label:after {
+      transform: scale(1);
+    }
+  }
+  // .checkbox__label
+  &__label {
+    position: relative;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    gap: 10px;
+    &:before {
+      content: '';
+      align-self: flex-start;
+      flex: 0 0 rem(30);
+      width: rem(30);
+      height: rem(30);
+      border-radius: rem(6);
+      border: 1px solid #d8ebf6;
+      background: var(--clr-white);
+      box-shadow: 0px 8px 12px 0px rgba(117, 132, 146, 0.06);
+      transition: all 0.32s ease-in-out;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: rem(2);
+      left: rem(7);
+      flex: 0 0 rem(26);
+      width: rem(26);
+      height: rem(19);
+      @extend %bg-con;
+      background-image: url('@img/icons/popup-check.svg');
+      transform: scale(0);
+      transform-origin: 40% 60%;
+      transition: transform 0.32s ease-in-out;
+    }
+  }
+  // .checkbox__text
+  &__text {
+    color: var(--clr-main);
+    font-size: rem(12);
+    font-weight: 600;
+    letter-spacing: 1.8px;
+
+    a {
+      transition: border-color 0.32s ease-in-out;
+    }
+    a:link,
+    a:visited {
+      border-bottom: 1px solid var(--clr-main);
+    }
+    a:hover {
+      border-color: transparent;
+    }
+  }
 }
