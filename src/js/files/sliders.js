@@ -197,12 +197,21 @@ function initSliders() {
 
     const thumbsSlider = new Swiper('.team__thumbs', {
       modules: [Navigation, Thumbs],
-      slidesPerView: 3.4,
+      slidesPerView: 4,
       spaceBetween: 20,
       speed: 800,
 
-      //touchRatio: 0,
-      //simulateTouch: false,
+      breakpoints: {
+        320: {
+          slidesPerView: 3,
+          spaceBetween: 15,
+        },
+        710: {
+          slidesPerView: 4,
+          spaceBetween: 20,
+        },
+      },
+
       loop: true,
       preloadImages: false,
       lazy: true,
@@ -238,16 +247,10 @@ function initSliders() {
       breakpoints: {
         320: {
           slidesPerView: 1,
-          spaceBetween: 0,
-          autoHeight: true,
-        },
-        768: {
-          slidesPerView: 2.4,
-          spaceBetween: 20,
+          spaceBetween: 15,
         },
         992: {
           slidesPerView: 3,
-          spaceBetween: 15,
         },
         1200: {
           slidesPerView: 3.4,
