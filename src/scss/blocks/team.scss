@@ -1,5 +1,8 @@
 .page {
   &__team {
+    &:not(:last-child) {
+      margin-bottom: rem(130);
+    }
   }
 }
 .team {
@@ -35,12 +38,31 @@
           }
         }
       }
+
+      //== 992px ==//
+      @media (max-width: $tb) {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
     }
     .swiper-button-prev {
       margin-right: rem(20);
+
+      //== 992px ==//
+      @media (max-width: $tb) {
+        margin-right: 0;
+        right: 0;
+      }
     }
     .swiper-button-next {
       margin-left: rem(20);
+
+      //== 992px ==//
+      @media (max-width: $tb) {
+        margin-left: 0;
+        left: 0;
+      }
     }
   }
 
@@ -109,9 +131,27 @@
 
   &__content {
     position: absolute;
-    z-index: 99999;
-    top: 0;
-    right: 0;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 0;
+    top: rem(65);
+    right: 20%;
+    transition: all 0.32s ease-in-out;
+
+    &._active {
+      visibility: visible;
+      opacity: 1;
+      z-index: 1;
+    }
+
+    //== 1360px ==//
+    @media (max-width: $note-l) {
+      right: 15%;
+    }
+    //== 1200px ==//
+    @media (max-width: $note-m) {
+      right: 0;
+    }
   }
 
   &__name {
@@ -132,6 +172,17 @@
     line-height: 120%;
     font-weight: 400;
 
+    span {
+      flex: 0 0 rem(441);
+      max-width: rem(441);
+
+      //== 1200px ==//
+      @media (max-width: $note-m) {
+        flex: 0 0 rem(360);
+        max-width: rem(360);
+      }
+    }
+
     &::before {
       content: '';
       flex: 0 0 rem(34);
@@ -139,6 +190,7 @@
       height: rem(32);
       @extend %bg-con;
       background-image: url('@img/icons/star.svg');
+      margin-right: rem(16);
     }
   }
 }

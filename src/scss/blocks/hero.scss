@@ -35,6 +35,10 @@
     background-attachment: fixed;
     text-align: center;
 
+    .mobile & {
+      background-attachment: scroll;
+    }
+
     @media (max-width: em(639.98)) {
       border-radius: 0;
     }

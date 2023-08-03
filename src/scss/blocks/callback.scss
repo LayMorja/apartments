@@ -21,6 +21,10 @@
     background-attachment: fixed;
     border-radius: rem(80);
 
+    .mobile & {
+      background-attachment: scroll;
+    }
+
     .callback--right & {
       justify-content: flex-end;
     }
