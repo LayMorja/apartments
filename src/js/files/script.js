@@ -4,6 +4,8 @@ import { isMobile, menuClose } from './functions.js';
 // import { flsModules } from "./modules.js";
 
 if (isMobile.any()) {
+  document.documentElement.classList.add('mobile');
+  
   (function closeMenu() {
     let x1 = null;
     let y1 = null;
