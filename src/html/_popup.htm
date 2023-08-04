@@ -29,7 +29,7 @@
               class="input"></textarea>
           </div>
           <div class="popup__form-item">
-            <div class="checkbox">
+            <div class="popup__checkbox checkbox">
               <input
                 id="c_1"
                 checked
@@ -86,7 +86,7 @@
               class="input"></textarea>
           </div>
           <div class="popup__form-item">
-            <div class="checkbox">
+            <div class="popup__checkbox checkbox">
               <input
                 id="c_2"
                 checked
@@ -139,7 +139,7 @@
               class="input" />
           </div>
           <div class="popup__form-item">
-            <div class="checkbox">
+            <div class="popup__checkbox checkbox">
               <input
                 id="c_3"
                 checked
@@ -337,6 +337,59 @@
               <span>Записаться на просмотр</span>
             </button>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="quiz" aria-hidden="true" class="popup popup--quiz">
+  <div class="popup__wrapper">
+    <div class="popup__content">
+      <div class="popup__body">
+        <button data-close type="button" class="popup__close">
+          <svg width="26" height="26">
+            <use xlink:href="@img/svgicons/icons.svg#close" />
+          </svg>
+        </button>
+        <div class="popup__description">
+          Ответьте на все вопросы и получите индивидуальную подборку
+        </div>
+        <div class="popup__quiz quiz">
+          <h2 class="quiz__question"></h2>
+          <form action="#" class="quiz__form">
+            <div class="quiz__items"></div>
+
+            <div class="quiz__slider swiper">
+              <div class="quiz__wrapper swiper-wrapper"></div>
+              <div hidden class="swiper-button-prev">
+                <svg width="8" height="13">
+                  <use xlink:href="@img/svgicons/icons.svg#arrow-left-small" />
+                </svg>
+              </div>
+              <div hidden class="swiper-button-next">
+                <svg width="8" height="13">
+                  <use xlink:href="@img/svgicons/icons.svg#arrow-right-small" />
+                </svg>
+              </div>
+            </div>
+            <div class="quiz__add"></div>
+            <div class="quiz__activities">
+              <div class="quiz__progress">
+                <div class="quiz__progress-line">
+                  <span class="quiz__progress-percent">14%</span>
+                </div>
+              </div>
+              <div class="quiz__buttons">
+                <button class="quiz__prev" type="button">Назад</button>
+                <button disabled="true" class="quiz__next button _reverse" type="submit">
+                  <span>Далее</span>
+                  <svg width="14" height="8">
+                    <use xlink:href="@img/svgicons/icons.svg#quiz-arrow" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
