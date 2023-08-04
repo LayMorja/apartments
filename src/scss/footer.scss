@@ -131,14 +131,9 @@
 //====================================================================================================
 .contacts {
   &__body {
+    position: relative;
     display: flex;
     justify-content: space-between;
-    // padding-bottom: rem(76);
-
-    // //== 992px ==//
-    // @media (max-width: $tb) {
-    //   padding-bottom: rem(410);
-    // }
   }
 
   &__wrapper {
@@ -153,6 +148,11 @@
 
     margin-bottom: rem(76);
 
+    //== 1200px ==//
+    @media (max-width: $note-m) {
+      max-width: rem(755);
+      flex: 1 0 rem(755);
+    }
     //== 992px ==//
     @media (max-width: $tb) {
       flex: 1 1 auto;
@@ -292,6 +292,95 @@
     //== 440px ==//
     @media (max-width: $mb-s) {
       font-size: rem(18);
+    }
+  }
+}
+.contacts {
+  &__up {
+    margin-top: rem(-59);
+    @extend %fl-c;
+    position: relative;
+    z-index: 2;
+
+    &:focus,
+    &:hover,
+    &:target {
+      outline: none;
+      .contacts__up-icon {
+        filter: drop-shadow(0 3px 5px rgba(51, 51, 51, 0.16));
+      }
+    }
+
+    //== 992px ==//
+    @media (max-width: $tb) {
+      margin-top: 0;
+      position: absolute;
+      bottom: rem(-35);
+      right: rem(20);
+    }
+    //== 768px ==//
+    @media (max-width: $mb) {
+      bottom: rem(-55);
+      right: rem(14);
+    }
+    //== 440px ==//
+    @media (max-width: $mb-s) {
+      bottom: rem(-54);
+    }
+  }
+
+  &__up-icon {
+    @extend %fl-a-ct;
+    flex: 0 0 rem(117);
+    width: rem(117);
+    height: rem(117);
+    border-radius: 50%;
+    background-color: #39b8fe;
+    border: rem(10) solid var(--clr-white);
+    transition: filter 0.32s ease-in-out;
+
+    svg {
+      fill: var(--clr-white);
+    }
+
+    &:not(:last-child) {
+      margin-bottom: rem(15);
+    }
+
+    //== 992px ==//
+    @media (max-width: $tb) {
+      flex: 0 0 rem(97);
+      width: rem(97);
+      height: rem(97);
+    }
+    //== 768px ==//
+    @media (max-width: $mb) {
+      flex: 0 0 rem(85);
+      width: rem(85);
+      height: rem(85);
+      border-width: rem(8);
+    }
+    //== 440px ==//
+    @media (max-width: $mb-s) {
+      flex: 0 0 rem(80);
+      width: rem(80);
+      height: rem(80);
+      border-width: rem(6);
+    }
+  }
+
+  &__up-descr {
+    transform: rotate(-90deg) translateY(rem(-120));
+    transform-origin: right center;
+    color: var(--clr-white);
+    font-size: rem(16);
+    font-weight: 700;
+    line-height: 120%;
+    letter-spacing: 2.56px;
+
+    //== 992px ==//
+    @media (max-width: $tb) {
+      display: none;
     }
   }
 }

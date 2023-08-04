@@ -190,6 +190,10 @@
           opacity: 1;
         }
       }
+
+      .mobile & {
+        opacity: 1;
+      }
     }
     .swiper-button.swiper-button-prev {
       left: rem(25);
