@@ -485,10 +485,16 @@ export function menuInit() {
   if (document.querySelector('.icon-menu')) {
     document.addEventListener('click', function (e) {
       if (bodyLockStatus && e.target.closest('.icon-menu')) {
+        console.log('here);');
         bodyLockToggle();
         document.documentElement.classList.toggle('menu-open');
       }
-      if (bodyLockStatus && !e.target.closest('.menu')) {
+      if (
+        bodyLockStatus &&
+        !e.target.closest('.menu') &&
+        !document.documentElement.classList.contains('popup-show') &&
+        !document.documentElement.classList.contains('lg-on')
+      ) {
         menuClose();
       }
     });
