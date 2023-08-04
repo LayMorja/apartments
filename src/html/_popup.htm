@@ -12,7 +12,8 @@
           <div class="popup__form-item">
             <input autocomplete="off" type="text" name="Имя" placeholder="Ваше имя" class="input" />
           </div>
-          <div class="popup__form-item">
+          <div class="popup__form-item popup__form-item--tel">
+            <span>+7</span>
             <input
               autocomplete="off"
               type="tel"
@@ -37,6 +38,63 @@
                 value="Согласен"
                 name="Согласие на ОПД" />
               <label for="c_1" class="checkbox__label"
+                ><span class="checkbox__text"
+                  >Согласен с условиями
+                  <a href="javascript:void(0)" target="_blank">конфидециальных данных</a></span
+                ></label
+              >
+            </div>
+          </div>
+          <div class="popup__form-item">
+            <button type="submit" class="popup__button button _reverse">
+              <span>Отправить</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="question" aria-hidden="true" class="popup">
+  <div class="popup__wrapper">
+    <div class="popup__content">
+      <div class="popup__body">
+        <button data-close type="button" class="popup__close">
+          <svg width="26" height="26">
+            <use xlink:href="@img/svgicons/icons.svg#close" />
+          </svg>
+        </button>
+        <h2 class="popup__title">Задать вопрос</h2>
+        <form action="#" class="popup__request">
+          <div class="popup__form-item">
+            <input autocomplete="off" type="text" name="Имя" placeholder="Ваше имя" class="input" />
+          </div>
+          <div class="popup__form-item popup__form-item--tel">
+            <span>+7</span>
+            <input
+              autocomplete="off"
+              type="tel"
+              name="Номер телефона"
+              placeholder="(___) ___-__-__"
+              class="input" />
+          </div>
+          <div class="popup__form-item">
+            <textarea
+              autocomplete="off"
+              name="Вопрос клиента"
+              placeholder="Задать вопрос"
+              class="input"></textarea>
+          </div>
+          <div class="popup__form-item">
+            <div class="checkbox">
+              <input
+                id="c_2"
+                checked
+                class="checkbox__input"
+                type="checkbox"
+                value="Согласен"
+                name="Согласие на ОПД" />
+              <label for="c_2" class="checkbox__label"
                 ><span class="checkbox__text"
                   >Согласен с условиями
                   <a href="javascript:void(0)" target="_blank">конфидециальных данных</a></span
