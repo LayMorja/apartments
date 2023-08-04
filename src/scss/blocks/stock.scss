@@ -143,6 +143,17 @@
         right: -35%;
       }
     }
+    @media (max-width: em(399.98)) {
+      &::before {
+        right: -41%;
+      }
+    }
+    //== 370px ==//
+    @media (max-width: $mb-xs) {
+      &::before {
+        right: -43%;
+      }
+    }
   }
 
   &__content {

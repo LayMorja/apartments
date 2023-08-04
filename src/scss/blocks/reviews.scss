@@ -7,7 +7,7 @@
     //== 576px ==//
     @media (max-width: $mb-m) {
       &:not(:last-child) {
-        margin-bottom: rem(65);
+        margin-bottom: rem(125);
       }
     }
   }
@@ -19,7 +19,7 @@
     &::before {
       content: '';
       position: absolute;
-      z-index: 999;
+      z-index: 150;
       top: 0;
       left: -100%;
       width: 100%;
@@ -64,6 +64,15 @@
 
     &.swiper-slide-active {
       height: rem(781);
+
+      @media (max-width: $mb-s) {
+        height: rem(560);
+      }
+    }
+
+    //== 440px ==//
+    @media (max-width: $mb-s) {
+      height: rem(560);
     }
   }
 
@@ -261,6 +270,12 @@
   @media (max-width: $note-m) {
     &.swiper-slide-active {
       height: rem(615);
+    }
+  }
+  //== 440px ==//
+  @media (max-width: $mb-s) {
+    &.swiper-slide-active {
+      height: rem(560);
     }
   }
 

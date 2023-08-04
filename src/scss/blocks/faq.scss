@@ -34,14 +34,13 @@
     font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
+    border-bottom: 1px solid var(--clr-purple);
+    transition: border-color 0.32s ease-in-out;
 
-    &:link,
-    &:visited {
-      text-decoration-line: underline;
-    }
-    &:hover,
-    &:active {
-      text-decoration-line: none;
+    @media (any-hover: hover) {
+      &:hover {
+        border-color: transparent;
+      }
     }
   }
 
