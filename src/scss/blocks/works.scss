@@ -51,6 +51,7 @@
     }
   }
 }
+//====================================================================================================
 
 .variants {
   &__settings {
@@ -223,6 +224,7 @@
   }
 
   &__content {
+    cursor: pointer;
     padding: rem(25) rem(24);
     border-radius: 0 0 rem(30) rem(30);
     transition: background-color 0.32s ease-in-out;
