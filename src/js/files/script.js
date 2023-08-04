@@ -5,7 +5,7 @@ import { isMobile, menuClose } from './functions.js';
 
 if (isMobile.any()) {
   document.documentElement.classList.add('mobile');
-  
+
   (function closeMenu() {
     let x1 = null;
     let y1 = null;
@@ -40,6 +40,7 @@ if (isMobile.any()) {
 
 document.addEventListener('DOMContentLoaded', () => {
   const map = document.querySelector('#map');
+  const upButton = document.querySelector('.contacts__up');
 
   const observerCb = function (entries, observer) {
     entries.forEach(entry => {
@@ -87,4 +88,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   observer.observe(map);
+
+  upButton.addEventListener('click', () => {
+    scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  });
 });
