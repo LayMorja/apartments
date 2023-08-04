@@ -25,7 +25,7 @@
     display: inline-flex;
     align-items: center;
     position: relative;
-    gap: 10px;
+    gap: rem(10);
     &:before {
       content: '';
       align-self: flex-start;
@@ -37,6 +37,13 @@
       background: var(--clr-white);
       box-shadow: 0px 8px 12px 0px rgba(117, 132, 146, 0.06);
       transition: all 0.32s ease-in-out;
+
+      //== 440px ==//
+      @media (max-width: $mb-s) {
+        flex: 0 0 rem(25);
+        width: rem(25);
+        height: rem(25);
+      }
     }
     &::after {
       content: '';
@@ -51,6 +58,15 @@
       transform: scale(0);
       transform-origin: 40% 60%;
       transition: transform 0.32s ease-in-out;
+
+      //== 440px ==//
+      @media (max-width: $mb-s) {
+        top: rem(9);
+        left: rem(8);
+        flex: 0 0 rem(10);
+        width: rem(10);
+        height: rem(8);
+      }
     }
   }
   // .checkbox__text
@@ -69,6 +85,11 @@
     }
     a:hover {
       border-color: transparent;
+    }
+
+    //== 440px ==//
+    @media (max-width: $mb-s) {
+      font-size: rem(10);
     }
   }
 }

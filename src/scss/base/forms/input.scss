@@ -37,6 +37,11 @@ textarea {
 
   &.just-validate-error-field {
   }
+
+  //== 576px ==//
+  @media (max-width: $mb-m) {
+    height: rem(50);
+  }
 }
 textarea.input {
   resize: none;
