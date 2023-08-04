@@ -177,6 +177,66 @@ function initSliders() {
     });
   }
 
+  if (document.querySelector('.work-preview__slider')) {
+    const thumbsSlider = new Swiper('.work-preview__thumbs', {
+      modules: [Navigation, Thumbs],
+      slidesPerView: 'auto',
+      speed: 800,
+
+      // breakpoints: {
+      //   320: {
+      //     slidesPerView: 3,
+      //     spaceBetween: 15,
+      //   },
+      //   710: {
+      //     slidesPerView: 4,
+      //     spaceBetween: 20,
+      //   },
+      // },
+
+      loop: false,
+      preloadImages: false,
+      lazy: true,
+    });
+
+    new Swiper('.work-preview__slider', {
+      modules: [Navigation, Thumbs],
+      slidesPerView: 1,
+      spaceBetween: 10,
+      speed: 800,
+
+      //touchRatio: 0,
+      //simulateTouch: false,
+      loop: true,
+      preloadImages: false,
+      lazy: true,
+
+      // Кнопки "влево/вправо"
+      navigation: {
+        prevEl: '.swiper-button-prev',
+        nextEl: '.swiper-button-next',
+      },
+
+      thumbs: {
+        swiper: thumbsSlider,
+      },
+
+      // breakpoints: {
+      //   320: {
+      //     slidesPerView: 1,
+      //     spaceBetween: 15,
+      //   },
+      //   992: {
+      //     slidesPerView: 3,
+      //   },
+      //   1200: {
+      //     slidesPerView: 3.4,
+      //     spaceBetween: 20,
+      //   },
+      // },
+    });
+  }
+
   if (document.querySelector('.team__slider')) {
     const teamContentItems = Array.from(document.querySelectorAll('.team__content'));
 
