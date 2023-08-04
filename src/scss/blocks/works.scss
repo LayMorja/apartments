@@ -47,7 +47,33 @@
       padding: rem(45) 0 0;
     }
     // .tabs__body
-    &__body {
+    &__body--map {
+      position: relative;
+      overflow: hidden;
+      min-height: rem(800);
+      border-radius: rem(30);
+      box-shadow: 0 8px 15px rgba(96, 57, 254, 0.11);
+
+      #work-map {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+      }
+
+      //== 1200px ==//
+      @media (max-width: $note-m) {
+        min-height: rem(600);
+      }
+      //== 768px ==//
+      @media (max-width: $mb) {
+        min-height: rem(450);
+      }
+      //== 576px ==//
+      @media (max-width: $mb-m) {
+        min-height: 80vh;
+      }
     }
   }
 }

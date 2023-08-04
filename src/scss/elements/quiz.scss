@@ -1,0 +1,346 @@
+.popup {
+  &.popup--quiz {
+    color: var(--clr-black);
+  }
+}
+.quiz {
+  @extend %fl-c;
+  flex: 1 1 auto;
+  &__question {
+    line-height: 120%;
+    font-size: rem(40);
+    font-weight: 600;
+    text-transform: uppercase;
+
+    &:not(:last-child) {
+      margin-bottom: rem(55);
+    }
+    //== 1200px ==//
+    @media (max-width: $note-m) {
+      font-size: rem(36);
+    }
+    //== 992px ==//
+    @media (max-width: $tb) {
+      font-size: rem(32);
+    }
+    //== 768px ==//
+    @media (max-width: $mb) {
+      font-size: rem(28);
+      &:not(:last-child) {
+        margin-bottom: rem(35);
+      }
+    }
+    //== 440px ==//
+    @media (max-width: $mb-s) {
+      font-size: rem(24);
+      &:not(:last-child) {
+        margin-bottom: rem(17);
+      }
+    }
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: rem(20);
+    row-gap: rem(16);
+    &:not(:last-child) {
+      margin-bottom: rem(30);
+
+      .quiz__form--slider & {
+        margin-bottom: 0;
+      }
+    }
+
+    //== 768px ==//
+    @media (max-width: $mb) {
+      grid-template-columns: 1fr;
+    }
+    //== 576px ==//
+    @media (max-width: $mb-m) {
+      &:not(:last-child) {
+        margin-bottom: rem(21);
+      }
+    }
+  }
+
+  &__slider {
+    position: relative;
+    display: none;
+    height: rem(315);
+
+    .quiz__form--slider & {
+      display: block;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      cursor: pointer;
+      position: absolute;
+      z-index: 2;
+      @extend %fl-a-ct;
+      top: 50%;
+      width: rem(62);
+      height: rem(62);
+      border-radius: 50%;
+      background-color: var(--clr-white);
+      transform: translateY(-50%);
+      transition: background-color 0.32s ease-in-out;
+
+      svg {
+        fill: var(--clr-main);
+        transition: fill 0.32s ease-in-out;
+      }
+
+      @media (any-hover: hover) {
+        &:hover {
+          background-color: var(--clr-red);
+
+          svg {
+            fill: var(--clr-white);
+          }
+        }
+      }
+
+      &:focus,
+      &:target {
+        outline: none;
+
+        background-color: var(--clr-red);
+
+        svg {
+          fill: var(--clr-white);
+        }
+      }
+
+      //== 440px ==//
+      @media (max-width: $mb-s) {
+        width: rem(51);
+        height: rem(51);
+      }
+    }
+
+    .swiper-button-prev {
+      left: rem(14);
+      //== 440px ==//
+      @media (max-width: $mb-s) {
+        left: rem(6);
+      }
+    }
+    .swiper-button-next {
+      right: rem(14);
+      //== 440px ==//
+      @media (max-width: $mb-s) {
+        right: rem(6);
+      }
+    }
+
+    &:not(:last-child) {
+      margin-bottom: rem(24);
+    }
+
+    //== 768px ==//
+    @media (max-width: $mb) {
+      height: auto;
+    }
+  }
+
+  &__form {
+    @extend %fl-c;
+    flex: 1 1 auto;
+
+    &.quiz__form--slider .checkbox__label {
+      flex-wrap: wrap;
+    }
+
+    .checkbox,
+    .option {
+      &__label {
+        padding: rem(15) rem(14);
+        width: 100%;
+
+        &::after {
+          top: rem(24);
+          left: rem(22);
+          flex: 0 0 rem(16);
+          width: rem(16);
+          height: rem(13);
+          background-image: url('@img/icons/quiz-check.svg');
+
+          //== 440px ==//
+          @media (max-width: $mb-s) {
+            flex: 0 0 rem(10);
+            width: rem(10);
+            height: rem(8);
+          }
+        }
+      }
+
+      &__image {
+        flex: 1 1 100%;
+
+        img {
+          display: block;
+          max-width: 100%;
+          object-fit: contain;
+          margin: 0 auto rem(40) auto;
+        }
+      }
+
+      &__text {
+        color: var(--clr-black);
+      }
+    }
+
+    .option__input:checked .option__label:after {
+      transform: scale(1);
+    }
+
+    &.quiz__form--slider {
+      display: block;
+    }
+  }
+
+  &__checkbox,
+  &__option {
+    border-radius: rem(6);
+    border: 1px solid #d8ebf6;
+    background: var(--clr-white);
+    box-shadow: 0px 8px 12px 0px rgba(117, 132, 146, 0.06);
+  }
+
+  &__add {
+    font-size: rem(22);
+    line-height: 120%;
+
+    //== 992px ==//
+    @media (max-width: $tb) {
+      font-size: rem(18);
+    }
+    //== 768px ==//
+    @media (max-width: $mb) {
+      font-size: rem(16);
+
+      &:not(:last-child) {
+        margin-bottom: rem(17);
+      }
+    }
+    //== 576px ==//
+    @media (max-width: $mb-m) {
+      font-size: rem(12);
+    }
+    //== 440px ==//
+    @media (max-width: $mb-s) {
+      font-size: rem(10);
+    }
+  }
+
+  &__activities {
+    @extend %fl-r-ctb;
+    margin-top: auto;
+
+    @media (max-width: em(639.98)) {
+      flex-direction: column;
+    }
+  }
+
+  &__progress {
+    flex: 0 1 rem(840);
+    height: rem(20);
+    border-radius: rem(10);
+    background: var(--clr-white);
+    box-shadow: inset 0px 4px 4px 0px rgba(12, 25, 33, 0.11);
+
+    &:not(:last-child) {
+      margin-right: rem(20);
+    }
+
+    @media (max-width: em(639.98)) {
+      flex: 1 1 auto;
+      width: 100%;
+
+      &:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: rem(20);
+      }
+    }
+  }
+
+  &__progress-line {
+    transition: width 0.42s ease-in-out;
+    position: relative;
+    width: 14%;
+    height: 100%;
+    border-radius: rem(10);
+    background-color: var(--clr-red);
+  }
+
+  &__progress-percent {
+    position: absolute;
+    top: 50%;
+    right: rem(16);
+    transform: translateY(-50%);
+    color: var(--clr-white);
+    font-size: rem(10);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+
+    //== 768px ==//
+    @media (max-width: $mb) {
+      right: rem(5);
+    }
+  }
+
+  &__buttons {
+    @extend %fl-r-ct;
+
+    //== 440px ==//
+    @media (max-width: $mb-s) {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+
+  &__prev {
+    color: var(--clr-purple);
+    font-size: rem(10);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--clr-purple);
+    transition: border-color 0.32s ease-in-out;
+
+    @media (any-hover: hover) {
+      &:hover {
+        border-color: transparent;
+      }
+    }
+
+    &:not(:last-child) {
+      margin-right: rem(40);
+    }
+  }
+
+  &__next {
+    padding: rem(21.5) rem(27) rem(21.5) rem(30);
+    border-radius: rem(30);
+
+    svg {
+      margin-left: rem(18);
+      fill: var(--clr-white);
+      transition: fill 0.32s ease-in-out;
+    }
+
+    @media (any-hover: hover) {
+      &:hover svg {
+        fill: var(--clr-purple);
+      }
+    }
+
+    &[disabled] {
+      background-color: #ccc;
+      border-color: #ccc;
+      pointer-events: none;
+    }
+  }
+}
