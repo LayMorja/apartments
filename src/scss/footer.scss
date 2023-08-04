@@ -133,12 +133,12 @@
   &__body {
     display: flex;
     justify-content: space-between;
-    padding-bottom: rem(76);
+    // padding-bottom: rem(76);
 
-    //== 992px ==//
-    @media (max-width: $tb) {
-      padding-bottom: rem(410);
-    }
+    // //== 992px ==//
+    // @media (max-width: $tb) {
+    //   padding-bottom: rem(410);
+    // }
   }
 
   &__wrapper {
@@ -151,10 +151,13 @@
     border-radius: 0 0 rem(80) rem(80);
     background-color: var(--clr-bg);
 
+    margin-bottom: rem(76);
+
     //== 992px ==//
     @media (max-width: $tb) {
       flex: 1 1 auto;
       max-width: none;
+      margin-bottom: rem(410);
     }
     //== 576px ==//
     @media (max-width: $mb-m) {
