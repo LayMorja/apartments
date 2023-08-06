@@ -107,6 +107,8 @@
   }
 
   &__contacts {
+    position: relative;
+    z-index: 9999;
   }
 
   &__map {
@@ -116,15 +118,28 @@
     top: 0;
     left: 0;
 
-    &::after {
+    &::before {
       content: '';
       position: absolute;
+      pointer-events: none;
+      z-index: 9998;
       width: 100%;
       height: 100%;
       top: 0;
       left: 0;
-      background: rgba(51, 51, 51, 0.3);
-      pointer-events: none;
+      background-color: rgba(51, 51, 51, 0.5);
+    }
+
+    .leaflet-map-pane {
+      filter: grayscale(1);
+    }
+
+    &-content {
+      font-family: $fontFamily;
+      font-weight: 600;
+      color: var(--clr-black);
+      font-size: rem(12);
+      letter-spacing: 1.5px;
     }
   }
 }
@@ -139,7 +154,7 @@
   &__wrapper {
     margin-top: rem(-141);
     position: relative;
-    z-index: 2;
+    z-index: 9999;
     max-width: rem(785);
     flex: 1 0 rem(785);
     padding: 0 rem(48.5) rem(50);
@@ -300,7 +315,7 @@
     margin-top: rem(-59);
     @extend %fl-c;
     position: relative;
-    z-index: 2;
+    z-index: 9999;
 
     &:focus,
     &:hover,
