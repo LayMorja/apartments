@@ -1,4 +1,7 @@
 // Подключение функционала "Чертогов Фрилансера"
+// import Leaflet from 'leaflet';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import Swiper from 'swiper';
 import { Grid, Navigation } from 'swiper/modules';
 import { isMobile, menuClose } from './functions.js';
@@ -49,37 +52,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const observerCb = function (entries, observer) {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        ymaps.ready(function () {
-          var myMap = new ymaps.Map('map', {
-              center: [56.045168, 92.88421],
-              zoom: 16,
-            }),
-            // Создаём макет содержимого.
-            MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
-              '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
-            ),
-            myPlacemark = new ymaps.Placemark(
-              [56.045054, 92.888942],
-              {
-                hintContent: 'Наше расположение',
-                balloonContent: 'Красноярск, ул. Караульная 88, БЦ Дубль, оф.7-31',
-              },
-              {
-                // Опции.
-                // Необходимо указать данный тип макета.
-                iconLayout: 'default#image',
-                // Своё изображение иконки метки.
-                iconImageHref: 'img/icons/target.svg',
-                // Размеры метки.
-                iconImageSize: [67, 81],
-                // Смещение левого верхнего угла иконки относительно
-                // её "ножки" (точки привязки).
-                iconImageOffset: [-33, -85],
-              }
-            );
+        const map = L.map('map').setView([56.045206, 92.886154], 18);
 
-          myMap.geoObjects.add(myPlacemark);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 20,
+          attribution: '© OpenStreetMap',
+        }).addTo(map);
+
+        const myIcon = L.icon({
+          iconUrl: 'img/icons/target.svg',
+          iconSize: [67, 81],
+          iconAnchor: [34, 81],
+          popupAnchor: [0, -81],
         });
+
+        const marker = L.marker([56.045222, 92.88879], { icon: myIcon }).addTo(map);
+
+        marker.bindPopup(
+          '<p class="footer__map-content">Красноярск, ул. Караульная 88, БЦ Дубль, оф.7-31</p>'
+        );
 
         observer.unobserve(entry.target);
       }
@@ -101,38 +92,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-document.addEventListener('DOMContentLoaded', () => {
-  ymaps.ready(function () {
-    const myMap = new ymaps.Map('work-map', {
-        center: [56.045168, 92.88421],
-        zoom: 16,
-      }),
-      // Создаём макет содержимого.
-      MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
-        '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
-      ),
-      myPlacemark = new ymaps.Placemark(
-        [56.045054, 92.888942],
-        {
-          hintContent: 'Наше расположение',
-          balloonContent: 'Красноярск, ул. Караульная 88, БЦ Дубль, оф.7-31',
-        },
-        {
-          // Опции.
-          // Необходимо указать данный тип макета.
-          iconLayout: 'default#image',
-          // Своё изображение иконки метки.
-          iconImageHref: 'img/icons/target.svg',
-          // Размеры метки.
-          iconImageSize: [67, 81],
-          // Смещение левого верхнего угла иконки относительно
-          // её "ножки" (точки привязки).
-          iconImageOffset: [-33, -85],
-        }
-      );
 
-    myMap.geoObjects.add(myPlacemark);
-  });
+const mapButton = document.querySelector('#map-button');
+mapButton.addEventListener('click', () => {
+  setTimeout(() => {
+    const map = L.map('work-map').setView([56.045206, 92.886154], 12);
+    console.log('Work map init');
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 20,
+      attribution: '© OpenStreetMap',
+    }).addTo(map);
+
+    const myIcon = L.icon({
+      iconUrl: 'img/icons/target.svg',
+      iconSize: [42, 50],
+      iconAnchor: [21, 50],
+      popupAnchor: [0, -50],
+    });
+
+    const marker = L.marker([56.045222, 92.88879], { icon: myIcon }).addTo(map);
+
+    marker.bindPopup(
+      '<p class="footer__map-content">Красноярск, ул. Караульная 88, БЦ Дубль, оф.7-31</p>'
+    );
+  }, 500);
 });
 
 const quizData = [

@@ -1,16 +1,16 @@
 <section class="page__works works" id="catalog">
   <div class="works__container container">
-    <h2 class="works__title title" data-aos="zoom-in">Новостройки Красноярска</h2>
+    <h2 class="works__title title">Новостройки Красноярска</h2>
     <div data-tabs class="tabs">
       <div class="tabs__navigation-body">
         <nav data-tabs-titles class="tabs__navigation">
           <button type="button" class="tabs__title _tab-active">Список</button>
-          <button type="button" class="tabs__title">На карте</button>
+          <button type="button" class="tabs__title" id="map-button">На карте</button>
         </nav>
       </div>
       <div data-tabs-body class="tabs__content">
         <div class="tabs__body variants">
-          <div class="variants__settings">
+          <div class="variants__settings" data-one-select>
             <div class="variants__settings-item">
               <select name="form[]" class="form">
                 <option value="" selected data-show>Все застройщики</option>
@@ -527,31 +527,6 @@
           <button type="button" class="variants__more button">
             <span>Загрузить еще</span>
           </button>
-          <div class="variants__pagging pagging">
-            <ul class="pagging__list">
-              <li>
-                <a href="" class="pagging__item _active">1</a>
-              </li>
-              <li>
-                <a href="" class="pagging__item">2</a>
-              </li>
-              <li>
-                <a href="" class="pagging__item">3</a>
-              </li>
-              <li>
-                <a href="" class="pagging__item">4</a>
-              </li>
-              <li>
-                <a href="" class="pagging__item">5</a>
-              </li>
-              <li>
-                <span class="pagging__dots">...</span>
-              </li>
-              <li>
-                <a href="" class="pagging__item">24</a>
-              </li>
-            </ul>
-          </div>
         </div>
         <div class="tabs__body tabs__body--map">
           <div id="work-map"></div>
