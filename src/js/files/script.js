@@ -101,56 +101,38 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-
 document.addEventListener('DOMContentLoaded', () => {
-  const map = document.querySelector('#work-map');
+  ymaps.ready(function () {
+    const myMap = new ymaps.Map('work-map', {
+        center: [56.045168, 92.88421],
+        zoom: 16,
+      }),
+      // Создаём макет содержимого.
+      MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+        '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+      ),
+      myPlacemark = new ymaps.Placemark(
+        [56.045054, 92.888942],
+        {
+          hintContent: 'Наше расположение',
+          balloonContent: 'Красноярск, ул. Караульная 88, БЦ Дубль, оф.7-31',
+        },
+        {
+          // Опции.
+          // Необходимо указать данный тип макета.
+          iconLayout: 'default#image',
+          // Своё изображение иконки метки.
+          iconImageHref: 'img/icons/target.svg',
+          // Размеры метки.
+          iconImageSize: [67, 81],
+          // Смещение левого верхнего угла иконки относительно
+          // её "ножки" (точки привязки).
+          iconImageOffset: [-33, -85],
+        }
+      );
 
-  const observerCb = function (entries, observer) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        ymaps.ready(function () {
-          const myMap = new ymaps.Map('work-map', {
-              center: [56.045168, 92.88421],
-              zoom: 16,
-            }),
-            // Создаём макет содержимого.
-            MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
-              '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
-            ),
-            myPlacemark = new ymaps.Placemark(
-              [56.045054, 92.888942],
-              {
-                hintContent: 'Наше расположение',
-                balloonContent: 'Красноярск, ул. Караульная 88, БЦ Дубль, оф.7-31',
-              },
-              {
-                // Опции.
-                // Необходимо указать данный тип макета.
-                iconLayout: 'default#image',
-                // Своё изображение иконки метки.
-                iconImageHref: 'img/icons/target.svg',
-                // Размеры метки.
-                iconImageSize: [67, 81],
-                // Смещение левого верхнего угла иконки относительно
-                // её "ножки" (точки привязки).
-                iconImageOffset: [-33, -85],
-              }
-            );
-
-          myMap.geoObjects.add(myPlacemark);
-        });
-
-        observer.unobserve(entry.target);
-      }
-    });
-  };
-
-  const observer = new IntersectionObserver(observerCb, {
-    root: null,
-    threshold: 0.2,
+    myMap.geoObjects.add(myPlacemark);
   });
-
-  observer.observe(map);
 });
 
 const quizData = [
@@ -216,7 +198,7 @@ const quizData = [
   },
 ];
 
-export let questionIndex = 0;
+let questionIndex = 0;
 const answers = {};
 quizData.forEach(el => {
   answers[el.question_type] = [];
@@ -232,7 +214,7 @@ const progressBar = document.querySelector('.quiz__progress-line');
 const progressPercent = document.querySelector('.quiz__progress-percent');
 const quizAdd = document.querySelector('.quiz__add');
 
-export const renderQuestion = function (index) {
+const renderQuestion = function (index) {
   const currentQuestion = quizData[index];
   questionName.textContent = currentQuestion.question;
   quizItems.textContent = '';
