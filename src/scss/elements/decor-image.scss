@@ -8,6 +8,11 @@
 
   .parallax-background {
     border-radius: rem(50);
+
+    img,
+    picture {
+      border-radius: rem(50);
+    }
   }
 
   &::before {
@@ -70,6 +75,11 @@
 
     .parallax-background {
       border-radius: rem(30);
+
+      img,
+      picture {
+        border-radius: rem(30);
+      }
     }
   }
 
