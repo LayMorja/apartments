@@ -180,13 +180,6 @@
     border-radius: rem(30) rem(30) 0 0;
     position: relative;
     height: rem(285);
-    @media (any-hover: hover) {
-      &:hover {
-        .item-variants__img {
-          transform: none;
-        }
-      }
-    }
 
     .swiper-button {
       position: absolute;

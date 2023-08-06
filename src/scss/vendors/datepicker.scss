@@ -1,9 +1,9 @@
 .qs-datepicker-container {
-  margin: 0.3125rem;
-  font-size: 16px;
+  margin: 0.3125rem 0;
+  font-size: 0.875rem;
   color: var(--clr-main);
   position: absolute;
-  width: 15.625em;
+  width: 24em;
   display: flex;
   flex-direction: column;
   z-index: 9001;
@@ -14,6 +14,9 @@
   box-shadow: 0 1.25em 1.25em -0.9375em rgba(0, 0, 0, 0.3);
   padding: 0.3125rem;
 
+  @media (max-width: 90rem) {
+    width: 15.625em;
+  }
   //== 36rem ==//
   @media (max-width: 36rem) {
     font-size: 0.875rem;
@@ -111,11 +114,10 @@
   align-items: center;
   flex-grow: 1;
   flex-shrink: 0;
-  background: var(--clr-green);
+  background: var(--clr-title);
   border-radius: 4px;
   color: var(--clr-white);
   filter: blur(0);
-  transition: filter 0.3s;
   transition: filter 0.3s;
 }
 .qs-datepicker .qs-controls.qs-blur {
@@ -146,12 +148,12 @@
   transition: border 0.2s;
 }
 .qs-datepicker .qs-arrow.qs-left:after {
-  border-right-color: var(--clr-main);
+  border-right-color: #a0deff;
   right: 50%;
   transform: translate(25%, -50%);
 }
 .qs-datepicker .qs-arrow.qs-right:after {
-  border-left-color: var(--clr-main);
+  border-left-color: #a0deff;
   left: 50%;
   transform: translate(-25%, -50%);
 }
@@ -162,7 +164,7 @@
   cursor: pointer;
 }
 .qs-datepicker .qs-month-year:hover {
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid var(--clr-white);
 }
 .qs-datepicker .qs-month-year:active:focus,
 .qs-datepicker .qs-month-year:focus {
@@ -176,7 +178,7 @@
 }
 .qs-datepicker .qs-squares {
   display: flex;
-  color: var(--clr-black);
+  color: var(--clr-main);
   flex-wrap: wrap;
   padding: 0.3125em;
   filter: blur(0);
@@ -197,7 +199,9 @@
   border-radius: 0.26392em;
 }
 .qs-datepicker .qs-square.qs-current {
-  font-weight: 600;
+  font-weight: 500;
+  color: var(--clr-black);
+  background-color: rgba(57, 185, 254, 0.1);
 }
 .qs-datepicker .qs-square.qs-current span {
   text-decoration: underline;
@@ -236,8 +240,10 @@
 }
 .qs-datepicker .qs-square.qs-day {
   cursor: default;
-  font-weight: 700;
-  color: var(--clr-black);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--clr-main);
+  letter-spacing: 1.5px;
 }
 .qs-datepicker .qs-square:not(.qs-empty):not(.qs-disabled):not(.qs-day):not(.qs-active):hover {
   background: var(--clr-red);

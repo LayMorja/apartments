@@ -3,9 +3,32 @@
   flex: 0 0 rem(690);
   height: rem(530);
   @extend %ibg-contain;
+  border-radius: rem(50);
 
   img {
     object-position: left center;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    transform: translateY(-50%);
+    width: rem(41);
+    height: rem(164);
+    background-repeat: no-repeat;
+    background-size: rem(41) rem(164);
+  }
+
+  &.decor-image--right::before {
+    left: 0;
+    background-image: url('data:image/svg+xml, %3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2241%22%20height%3D%22164%22%20viewBox%3D%220%200%2041%20164%22%20fill%3D%22%23F2F3F8%22%3E%3Cpath%20d%3D%22M0.275658%200.5V29.002C0.275658%2047.834%2010.4575%2065.1944%2026.8937%2074.3865L41%2082.2757H-57L0.275658%200.5Z%22%20fill%3D%22%23F2F3F8%22%2F%3E%3Cpath%20d%3D%22M0.275658%20163.776V135.274C0.275658%20116.442%2010.4575%2099.0813%2026.8937%2089.8891L41%2082H-57L0.275658%20163.776Z%22%20fill%3D%22%23F2F3F8%22%2F%3E%3C%2Fsvg%3E');
+  }
+
+  &.decor-image--left::before {
+    right: 0;
+    background-image: url('data:image/svg+xml, %3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2241%22%20height%3D%22164%22%20viewBox%3D%220%200%2041%20164%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M40.7243%200.5V29.002C40.7243%2047.834%2030.5425%2065.1944%2014.1063%2074.3865L-2.28882e-05%2082.2757H98L40.7243%200.5Z%22%20fill%3D%22%23F2F3F8%22%2F%3E%3Cpath%20d%3D%22M40.7243%20163.776V135.274C40.7243%20116.442%2030.5425%2099.0813%2014.1063%2089.8891L-2.28882e-05%2082H98L40.7243%20163.776Z%22%20fill%3D%22%23F2F3F8%22%2F%3E%3C%2Fsvg%3E');
   }
 
   //== 1200px ==//

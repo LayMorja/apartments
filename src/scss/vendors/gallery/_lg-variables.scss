@@ -1,9 +1,5 @@
 $backdrop-opacity: 1 !default;
-$lg-toolbar-bg: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.4)
-) !default;
+$lg-toolbar-bg: linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)) !default;
 $lg-border-radius-base: 2px !default;
 $lg-theme-highlight: rgb(169, 7, 7) !default;
 $lg-theme-color: #000 !default;
@@ -40,11 +36,7 @@ $lg-path-images: '../images' !default;
 $zoom-transition-duration: 0.5s !default;
 
 // Sub html - titile
-$lg-sub-html-bg: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.6)
-) !default;
+$lg-sub-html-bg: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)) !default;
 $lg-sub-html-color: #eee !default;
 
 // thumbnail toggle button
@@ -56,13 +48,13 @@ $lg-thumb-container-height: 100px;
 // Pager
 
 // z-index
-$zindex-outer: 1050 !default;
-$zindex-progressbar: 1083 !default;
-$zindex-controls: 1080 !default;
-$zindex-toolbar: 1082 !default;
-$zindex-subhtml: 1080 !default;
-$zindex-components: 1080 !default;
-$zindex-pager: 1080 !default;
-$zindex-playbutton: 1080 !default;
-$zindex-item: 1060 !default;
-$zindex-backdrop: 1040 !default;
+$zindex-outer: 10050 !default;
+$zindex-progressbar: 10083 !default;
+$zindex-controls: 10080 !default;
+$zindex-toolbar: 10082 !default;
+$zindex-subhtml: 10080 !default;
+$zindex-components: 10080 !default;
+$zindex-pager: 10080 !default;
+$zindex-playbutton: 10080 !default;
+$zindex-item: 10060 !default;
+$zindex-backdrop: 10040 !default;
