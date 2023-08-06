@@ -94,6 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const mapButton = document.querySelector('#map-button');
+const popupHTML =
+  '<div class="modal-work" data-popup="#work"><div class="modal-work__content"><div class="modal-work__image"><img src="img/works/01.png" alt="" /></div><div class="modal-work__body"><h3 class="modal-work__title">ЖК Дубенский</h3><ul class="modal-work__list"><li class="modal-work__item"><span class="modal-work__type">Срок сдачи</span><span class="modal-work__value">Дом сдан</span></li><li class="modal-work__item"><span class="modal-work__type">Ипотека</span><span class="modal-work__value">от 18%</span></li><li class="modal-work__item"><span class="modal-work__type">Застройщик</span><span class="modal-work__value">Сибиряк</span></li></ul></div></div><div class="modal-work__activities"><button type="button" data-popup="#work" class="modal-work__more">Подробнее</button><button type="button" data-popup="#recall" class="modal-work__popup button"><span>Записаться на просмотр</span></button></div></div>';
 mapButton.addEventListener('click', () => {
   setTimeout(() => {
     const map = L.map('work-map').setView([56.045206, 92.886154], 12);
@@ -112,12 +114,17 @@ mapButton.addEventListener('click', () => {
     });
 
     const marker = L.marker([56.045222, 92.88879], { icon: myIcon }).addTo(map);
+    const popup = L.popup({
+      content: popupHTML,
+      minWidth: 290,
+      maxWidth: 453,
+    });
 
-    marker.bindPopup(
-      '<p class="footer__map-content">Красноярск, ул. Караульная 88, БЦ Дубль, оф.7-31</p>'
-    );
+    marker.bindPopup(popup);
   }, 500);
 });
+
+//* Quiz ====================================================================================================
 
 const quizData = [
   {
