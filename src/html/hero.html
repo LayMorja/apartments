@@ -19,10 +19,13 @@
         <span>получить консультацию</span>
       </button>
     </div>
-    <img
-      src="@img/hero/background.png"
-      alt=""
-      aria-hidden="true"
-      class="hero__background parallax-image" />
+    <picture class="parallax-background">
+      <source media="(min-width: 579px)" srcset="@img/hero/background.png" />
+      <img
+        src="@img/hero/background--mobile.png"
+        alt=""
+        aria-hidden="true"
+        class="parallax-image" />
+    </picture>
   </div>
 </section>
