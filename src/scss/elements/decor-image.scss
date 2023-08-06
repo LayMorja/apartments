@@ -1,12 +1,13 @@
 .decor-image {
+  overflow: hidden;
   width: rem(690);
   flex: 0 0 rem(690);
   height: rem(530);
   @extend %ibg-contain;
   border-radius: rem(50);
 
-  img {
-    object-position: left center;
+  .parallax-background {
+    border-radius: rem(50);
   }
 
   &::before {
@@ -66,8 +67,9 @@
     flex: 1 1 auto;
     height: auto;
     padding-bottom: 72%;
-    img {
-      object-position: top;
+
+    .parallax-background {
+      border-radius: rem(30);
     }
   }
 
