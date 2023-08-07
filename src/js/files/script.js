@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }).addTo(map);
 
         const myIcon = L.icon({
-          iconUrl: 'img/icons/target.svg',
+          iconUrl: 'assets/img/icons/target.svg',
           iconSize: [67, 81],
           iconAnchor: [34, 81],
           popupAnchor: [0, -81],
@@ -107,7 +107,7 @@ mapButton.addEventListener('click', () => {
     }).addTo(map);
 
     const myIcon = L.icon({
-      iconUrl: 'img/icons/target.svg',
+      iconUrl: 'assets/img/icons/target.svg',
       iconSize: [42, 50],
       iconAnchor: [21, 50],
       popupAnchor: [0, -50],
@@ -270,7 +270,7 @@ const renderQuestion = function (index) {
           <label for="quiz_${index}_${idx}" class="checkbox__label">
             <span class="checkbox__text">${el.name}</span>
             <div class="checkbox__image">
-              <img src="../img/popup/${el.img}" />
+              <img src="assets/img/popup/${el.img}" />
               <div class="swiper-lazy-preloader swiper-lazy-preloader-black"></div>
             </div>
           </label>
