@@ -45,6 +45,8 @@ if (isMobile.any()) {
   })();
 }
 
+const parentDir = document.querySelector('.parent-dir').textContent;
+
 document.addEventListener('DOMContentLoaded', () => {
   const map = document.querySelector('#map');
   const upButton = document.querySelector('.contacts__up');
@@ -60,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }).addTo(map);
 
         const myIcon = L.icon({
-          iconUrl: 'assets/img/icons/target.svg',
+          iconUrl: `${parentDir}/assets/img/icons/target.svg`,
           iconSize: [67, 81],
           iconAnchor: [34, 81],
           popupAnchor: [0, -81],
@@ -94,8 +96,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const mapButton = document.querySelector('#map-button');
-const popupHTML =
-  '<div class="modal-work" data-popup="#work"><div class="modal-work__content"><div class="modal-work__image"><img src="img/works/01.png" alt="" /></div><div class="modal-work__body"><h3 class="modal-work__title">ЖК Дубенский</h3><ul class="modal-work__list"><li class="modal-work__item"><span class="modal-work__type">Срок сдачи</span><span class="modal-work__value">Дом сдан</span></li><li class="modal-work__item"><span class="modal-work__type">Ипотека</span><span class="modal-work__value">от 18%</span></li><li class="modal-work__item"><span class="modal-work__type">Застройщик</span><span class="modal-work__value">Сибиряк</span></li></ul></div></div><div class="modal-work__activities"><button type="button" data-popup="#work" class="modal-work__more">Подробнее</button><button type="button" data-popup="#recall" class="modal-work__popup button"><span>Записаться на просмотр</span></button></div></div>';
+const workItems = document.querySelectorAll('.item-variants');
+
 mapButton.addEventListener('click', () => {
   setTimeout(() => {
     const map = L.map('work-map').setView([56.045206, 92.886154], 12);
@@ -107,20 +109,33 @@ mapButton.addEventListener('click', () => {
     }).addTo(map);
 
     const myIcon = L.icon({
-      iconUrl: 'assets/img/icons/target.svg',
+      iconUrl: `${parentDir}/assets/img/icons/target.svg`,
       iconSize: [42, 50],
       iconAnchor: [21, 50],
       popupAnchor: [0, -50],
     });
 
-    const marker = L.marker([56.045222, 92.88879], { icon: myIcon }).addTo(map);
-    const popup = L.popup({
-      content: popupHTML,
-      minWidth: 290,
-      maxWidth: 453,
-    });
+    workItems.forEach(function (item) {
+      const title = item.querySelector('.item-variants__title').textContent;
+      const descriptionItems = item.querySelectorAll(
+        '.item-variants__info-table-row > *:last-child'
+      );
+      const coords = item
+        .querySelector('.item-variants__coords')
+        .textContent.split(', ')
+        .map(el => parseFloat(el));
 
-    marker.bindPopup(popup);
+      const popupHTML = `<div class="modal-work" data-popup="#work"><div class="modal-work__content"><div class="modal-work__image"><img src="img/works/01.png" alt="" /></div><div class="modal-work__body"><h3 class="modal-work__title">${title}</h3><ul class="modal-work__list"><li class="modal-work__item"><span class="modal-work__type">Срок сдачи</span><span class="modal-work__value">${descriptionItems[0].textContent}</span></li><li class="modal-work__item"><span class="modal-work__type">Ипотека</span><span class="modal-work__value">${descriptionItems[1].textContent}</span></li><li class="modal-work__item"><span class="modal-work__type">Застройщик</span><span class="modal-work__value">${descriptionItems[2].textContent}</span></li></ul></div></div><div class="modal-work__activities"><button type="button" data-popup="#work" class="modal-work__more">Подробнее</button><button type="button" data-popup="#recall" class="modal-work__popup button"><span>Записаться на просмотр</span></button></div></div>`;
+
+      const popup = L.popup({
+        content: popupHTML,
+        minWidth: 290,
+        maxWidth: 453,
+      });
+      const marker = L.marker(coords, { icon: myIcon }).addTo(map);
+
+      marker.bindPopup(popup);
+    });
   }, 500);
 });
 
@@ -270,7 +285,7 @@ const renderQuestion = function (index) {
           <label for="quiz_${index}_${idx}" class="checkbox__label">
             <span class="checkbox__text">${el.name}</span>
             <div class="checkbox__image">
-              <img src="assets/img/popup/${el.img}" />
+              <img src="${parentDir}/assets/img/quiz/${el.img}" />
               <div class="swiper-lazy-preloader swiper-lazy-preloader-black"></div>
             </div>
           </label>
