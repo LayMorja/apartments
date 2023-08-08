@@ -131,7 +131,12 @@
         bottom: rem(140);
         right: -25%;
         width: rem(380);
-        height: rem(204);
+        height: rem(240);
+      }
+    }
+    @media (max-width: em(479.98)) {
+      &::before {
+        right: -30%;
       }
     }
     //== 440px ==//
@@ -139,6 +144,7 @@
       min-height: rem(180);
       border-radius: rem(30);
       &::before {
+        height: rem(204);
         bottom: rem(70);
         right: -35%;
       }
