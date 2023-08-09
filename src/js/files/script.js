@@ -237,8 +237,8 @@ const quizData = [
     answers: ['2023', '2024', '2025', 'Готовое'],
   },
   {
-    question: 'Какие районы Красноярска вы рассматриваете?',
-    question_type: 'Интересующие районы',
+    question: 'Какой тип отделки рассматриваете?',
+    question_type: 'Тип отделки',
     type: 'checkbox-images',
     answers: [
       { name: 'Чистовая (под ключ)', img: 'ready.png' },
