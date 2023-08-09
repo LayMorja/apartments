@@ -29,7 +29,12 @@ import { zip } from './config/gulp-tasks/zip.js';
 
 const fonts = gulp.series(reset, otfToTtf, ttfToWoff, fonstStyle);
 const devTasks = gulp.parallel(fonts, gitignore);
-const buildTasks = gulp.series(fonts, jsDev, js, gulp.parallel(html, css, images, gitignore));
+const buildTasks = gulp.series(
+  fonts,
+  jsDev,
+  js,
+  gulp.parallel(html, css, images, gitignore, resources)
+);
 const vendorsTasks = gulp.series(
   fonts,
   jsDev,

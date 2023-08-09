@@ -70,6 +70,7 @@
     "aos": "^2.3.4",
     "inputmask": "latest",
     "js-datepicker": "^5.18.2",
+    "just-validate": "^4.2.0",
     "leaflet": "^1.9.4",
     "lightgallery": "latest",
     "nouislider": "latest",

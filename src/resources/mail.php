@@ -7,10 +7,10 @@ require 'phpmailer/Exception.php';
 $c = true;
 // Формирование самого письма
 $title = "Новая заявка с сайта!";
-foreach ( $_POST as $key => $value ) {
-  if ( $value != "" && $key != "project_name" && $key != "admin_email" && $key != "form_subject" ) {
+foreach ($_POST as $key => $value) {
+  if ($value != "" && $key != "project_name" && $key != "admin_email" && $key != "form_subject") {
     $body .= "
-    " . ( ($c = !$c) ? '<tr>':'<tr style="background-color: #f8f8f8;">' ) . "
+    " . (($c = !$c) ? '<tr>' : '<tr style="background-color: #f8f8f8;">') . "
       <td style='padding: 10px; border: #e9e9e9 1px solid;'><b>$key</b></td>
       <td style='padding: 10px; border: #e9e9e9 1px solid;'>$value</td>
     </tr>
@@ -26,16 +26,16 @@ $mail = new PHPMailer\PHPMailer\PHPMailer();
 try {
   $mail->isSMTP();
   $mail->CharSet = "UTF-8";
-  $mail->SMTPAuth   = true;
+  $mail->SMTPAuth = true;
 
   // Настройки вашей почты
-  $mail->Host       = 'smtp.gmail.com'; // SMTP сервера вашей почты
-  $mail->Username   = 'huhalo08yandex.ru@gmail.com'; // Логин на почте
-  $mail->Password   = 'srqjgbaknqqkrsnb'; // Пароль на почте
+  $mail->Host = 'smtp.gmail.com'; // SMTP сервера вашей почты
+  $mail->Username = 'huhalo08yandex.ru@gmail.com'; // Логин на почте
+  $mail->Password = 'srqjgbaknqqkrsnb'; // Пароль на почте
   $mail->SMTPSecure = 'ssl';
-  $mail->Port       = 465;
+  $mail->Port = 465;
 
-  $mail->setFrom('adm@' . $_SERVER['HTTP_HOST'], 'CUBAX "Эволюция строительства"');
+  $mail->setFrom('adm@' . $_SERVER['HTTP_HOST'], 'Apartments, Отдел продаж новостроек');
   // Получатель письма
   $mail->addAddress('evil-corporaty@yandex.ru');
 
