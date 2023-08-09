@@ -44,6 +44,16 @@
     grid-template-columns: repeat(2, 1fr);
     column-gap: rem(20);
     row-gap: rem(16);
+
+    .quiz__form--last & {
+      max-width: rem(520);
+      margin: 0 auto;
+      display: block;
+    }
+    .quiz__form--last & .button {
+      margin: 0 auto;
+    }
+
     &:not(:last-child) {
       margin-bottom: rem(30);
 
@@ -149,7 +159,8 @@
     @extend %fl-c;
     flex: 1 1 auto;
 
-    &.quiz__form--slider .checkbox__label {
+    &.quiz__form--slider .checkbox__label,
+    &.quiz__form--checkbox-image .checkbox__label {
       flex-wrap: wrap;
     }
 
@@ -183,7 +194,7 @@
           display: block;
           max-width: 100%;
           object-fit: contain;
-          margin: 0 auto rem(40) auto;
+          margin: 0 auto;
         }
       }
 
@@ -212,6 +223,14 @@
   &__add {
     font-size: rem(22);
     line-height: 120%;
+
+    p:not(:last-child) {
+      margin-bottom: rem(10);
+    }
+
+    &:not(:last-child) {
+      margin-bottom: rem(40);
+    }
 
     //== 992px ==//
     @media (max-width: $tb) {

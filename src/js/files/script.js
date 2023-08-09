@@ -83,18 +83,26 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   observer.observe(map);
 
+  const section = document.querySelector('.reviews');
+  const modalObserverCb = function (entries, observer) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        flsModules.popup.open('#reminder');
+        observer.unobserve(entry.target);
+      }
+    });
+  };
+  const modalObserver = new IntersectionObserver(modalObserverCb, {
+    root: null,
+    threshold: 0.2,
+  });
+  modalObserver.observe(section);
+
   document.querySelector('.contacts__up').addEventListener('click', () => {
     scrollTo({
       top: 0,
       left: 0,
       behavior: 'smooth',
-    });
-  });
-
-  const selects = document.querySelectorAll('.variants__settings-item select');
-  selects.forEach(sel => {
-    sel.addEventListener('submit', function (e) {
-      console.log(e);
     });
   });
 
@@ -115,7 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Если выбран плейсхолдер - скипаем
         if (!currentFilter[key]) continue;
         // Если внутри элемента нет значения, скрываем его
-        console.log(key);
         if (!el.dataset[key].split(',').includes(currentFilter[key])) {
           flag = false;
         }
@@ -140,7 +147,6 @@ const workItems = document.querySelectorAll('.item-variants');
 mapButton.addEventListener('click', () => {
   setTimeout(() => {
     const map = L.map('work-map').setView([56.045206, 92.886154], 12);
-    console.log('Work map init');
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 20,
@@ -157,6 +163,7 @@ mapButton.addEventListener('click', () => {
     workItems.forEach(function (item) {
       const title = item.querySelector('.item-variants__title').textContent;
       const imageSource = item.querySelector('img').src;
+      const itemModal = item.querySelector('.item-variants__content').dataset.popup;
       const descriptionItems = item.querySelectorAll(
         '.item-variants__info-table-row > *:last-child'
       );
@@ -165,7 +172,7 @@ mapButton.addEventListener('click', () => {
         .textContent.split(', ')
         .map(el => parseFloat(el));
 
-      const popupHTML = `<div class="modal-work" data-popup="#work"><div class="modal-work__content"><div class="modal-work__image"><img src="${imageSource}" alt="" /></div><div class="modal-work__body"><h3 class="modal-work__title">${title}</h3><ul class="modal-work__list"><li class="modal-work__item"><span class="modal-work__type">Срок сдачи</span><span class="modal-work__value">${descriptionItems[0].textContent}</span></li><li class="modal-work__item"><span class="modal-work__type">Ипотека</span><span class="modal-work__value">${descriptionItems[1].textContent}</span></li><li class="modal-work__item"><span class="modal-work__type">Застройщик</span><span class="modal-work__value">${descriptionItems[2].textContent}</span></li></ul></div></div><div class="modal-work__activities"><button type="button" data-popup="#work" class="modal-work__more">Подробнее</button><button type="button" data-popup="#recall" class="modal-work__popup button"><span>Записаться на просмотр</span></button></div></div>`;
+      const popupHTML = `<div class="modal-work" data-popup="${itemModal}"><div class="modal-work__content"><div class="modal-work__image"><img src="${imageSource}" alt="" /></div><div class="modal-work__body"><h3 class="modal-work__title">${title}</h3><ul class="modal-work__list"><li class="modal-work__item"><span class="modal-work__type">Срок сдачи</span><span class="modal-work__value">${descriptionItems[0].textContent}</span></li><li class="modal-work__item"><span class="modal-work__type">Ипотека</span><span class="modal-work__value">${descriptionItems[1].textContent}</span></li><li class="modal-work__item"><span class="modal-work__type">Застройщик</span><span class="modal-work__value">${descriptionItems[2].textContent}</span></li></ul></div></div><div class="modal-work__activities"><button type="button" data-popup="${itemModal}" class="modal-work__more">Подробнее</button><button type="button" data-popup="#recall" class="modal-work__popup button"><span>Записаться на просмотр</span></button></div></div>`;
 
       const popup = L.popup({
         content: popupHTML,
@@ -230,6 +237,17 @@ const quizData = [
     answers: ['2023', '2024', '2025', 'Готовое'],
   },
   {
+    question: 'Какие районы Красноярска вы рассматриваете?',
+    question_type: 'Интересующие районы',
+    type: 'checkbox-images',
+    answers: [
+      { name: 'Чистовая (под ключ)', img: 'ready.png' },
+      { name: 'Предчистовая', img: 'not-ready.png' },
+    ],
+    description: `<p>Чистовая отделка позволит сэкономить деньги на ремонте и быстро заехать после сдачи дома.</p>
+      <p>Предчистовая отделка избавит от лишнего демонтажа и позволит воплотить все ваши идеи.</p>`,
+  },
+  {
     question: 'Выберите то что для вас важно:',
     question_type: 'Важно для клиента',
     type: 'checkbox',
@@ -259,6 +277,7 @@ const questionName = document.querySelector('.quiz__question');
 const progressBar = document.querySelector('.quiz__progress-line');
 const progressPercent = document.querySelector('.quiz__progress-percent');
 const quizAdd = document.querySelector('.quiz__add');
+const thanksModal = document.querySelector('.thanks-popup');
 
 const renderQuestion = function (index) {
   const currentQuestion = quizData[index];
@@ -266,11 +285,16 @@ const renderQuestion = function (index) {
   quizItems.textContent = '';
   quizAdd.textContent = '';
   quizWrapper.textContent = '';
-  currentQuestion.type !== 'radio' ? (quizNext.disabled = true) : null;
+  currentQuestion.type !== 'radio' ? (quizNext.disabled = true) : (quizNext.disabled = false);
   quizForm.classList.contains('quiz__form--slider')
     ? quizForm.classList.remove('quiz__form--slider')
     : null;
-
+  quizForm.classList.contains('quiz__form--last')
+    ? quizForm.classList.remove('quiz__form--last')
+    : null;
+  quizForm.classList.contains('quiz__form--checkbox-image')
+    ? quizForm.classList.remove('quiz__form--checkbox-image')
+    : null;
   let percentage =
     index + 1 === quizData.length ? '99%' : Math.round(((index + 1) / quizData.length) * 100) + '%';
   progressBar.style.width = percentage;
@@ -362,10 +386,112 @@ const renderQuestion = function (index) {
       },
     });
   }
+  if (currentQuestion.type === 'checkbox-images') {
+    !quizForm.classList.contains('quiz__form--checkbox-image')
+      ? quizForm.classList.add('quiz__form--checkbox-image')
+      : null;
+    currentQuestion.answers.forEach((el, idx) => {
+      quizItems.insertAdjacentHTML(
+        'beforeend',
+        `<div class="quiz__checkbox checkbox">
+          <input
+            id="quiz_${index}_${idx}"
+            class="checkbox__input"
+            type="checkbox"
+            value="${el.name}"
+            name="${currentQuestion.question_type}" />
+          <label for="quiz_${index}_${idx}" class="checkbox__label">
+            <span class="checkbox__text">${el.name}</span>
+            <div class="checkbox__image">
+              <img src="${parentDir}/assets/img/quiz/${el.img}" />
+            </div>
+          </label>
+        </div>`
+      );
+    });
+  }
 
   if (currentQuestion.description) {
     quizAdd.innerHTML = currentQuestion.description;
   }
+};
+
+const sendQuizForm = function (e) {
+  e.preventDefault();
+  const formData = new FormData();
+  for (let key in answers) {
+    formData.append(key, answers[key]);
+  }
+  let xhr = new XMLHttpRequest();
+  const formAction = quizForm.action ? quizForm.action : 'mail.php';
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        const openModal = location.hash;
+        flsModules.popup.close(openModal);
+
+        questionIndex = 0;
+        renderQuestion(questionIndex);
+
+        setTimeout(() => {
+          thanksModal.classList.add('_active');
+        }, 800);
+        setTimeout(() => {
+          thanksModal.classList.remove('_active');
+        }, 2000);
+      }
+    }
+  };
+  xhr.open('POST', formAction, true);
+  xhr.send(formData);
+};
+
+const renderLastSlide = function () {
+  quizForm.classList.add('quiz__form--last');
+  quizNext.disabled = true;
+  questionName.textContent = 'Оставьте свой номер телефона';
+  quizItems.textContent = '';
+  quizAdd.textContent = '';
+  quizWrapper.textContent = '';
+
+  quizItems.insertAdjacentHTML(
+    'beforeend',
+    `<div class="popup__form-item popup__form-item--tel">
+        <span>+7</span>
+        <input
+          autocomplete="off"
+          type="tel"
+          name="Номер телефона"
+          placeholder="(___) ___-__-__"
+          class="input input--phone" />
+      </div>
+      <div class="popup__form-item popup__form-item--checkbox">
+        <div class="popup__checkbox checkbox">
+          <input
+            id="c_3"
+            checked
+            class="checkbox__input input-check"
+            type="checkbox"
+            value="Согласен"
+            name="Согласие на ОПД" />
+          <label for="c_3" class="checkbox__label"
+            ><span class="checkbox__text"
+              >Согласен с условиями
+              <a href="javascript:void(0)" target="_blank">конфидециальных данных</a></span
+            ></label
+          >
+        </div>
+      </div>
+      <div class="popup__form-item">
+        <button type="submit" class="popup__button button _reverse">
+          <span>Отправить</span>
+        </button>
+      </div>`
+  );
+  const quizPhone = quizForm.querySelector('.input--phone');
+  flsModules.inputmask = Inputmask({ mask: '(999) 999-99-99' }).mask(quizPhone);
+
+  quizForm.addEventListener('submit', e => sendQuizForm(e));
 };
 
 quizForm.addEventListener('change', function (e) {
@@ -392,13 +518,7 @@ quizNext.addEventListener('click', function (e) {
   if (questionIndex != quizData.length) {
     renderQuestion(questionIndex);
   } else {
-    const formData = new FormData();
-    for (let key in answers) {
-      formData.append(key, answers[key]);
-    }
-    questionIndex = 0;
-    renderQuestion(questionIndex);
-    flsModules.popup.open('#recall');
+    renderLastSlide();
   }
 });
 

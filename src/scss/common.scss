@@ -2,6 +2,71 @@
   display: none;
 }
 
+.thanks-popup {
+  @extend %fl-a-ct;
+  max-width: 100%;
+  text-align: center;
+  position: fixed;
+  z-index: 10004;
+  padding: rem(40) rem(50);
+  right: rem(10);
+  bottom: rem(20);
+  background-color: var(--clr-green);
+  border-radius: rem(30);
+  pointer-events: none;
+  transform: translateY(100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.32s ease-in-out;
+
+  &._active {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: all 0.6s ease-in-out;
+  }
+
+  span {
+    color: var(--clr-white);
+    font-size: rem(20);
+    font-weight: 500;
+  }
+
+  //== 992px ==//
+  @media (max-width: $tb) {
+    padding: rem(30) rem(40);
+    bottom: 10px;
+    right: 5px;
+
+    span {
+      font-size: rem(18);
+    }
+  }
+  //== 768px ==//
+  @media (max-width: $mb) {
+    padding: rem(20) rem(30);
+
+    span {
+      font-size: rem(16);
+    }
+  }
+  //== 576px ==//
+  @media (max-width: $mb-m) {
+    max-width: none;
+    width: calc(100% - rem(20));
+    right: 50%;
+    bottom: 5px;
+    transform: translate(50%, 100%);
+    border-radius: rem(16);
+    &._active {
+      transform: translateX(50%);
+    }
+    span {
+      font-size: rem(14);
+    }
+  }
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

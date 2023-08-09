@@ -8,9 +8,14 @@
           </svg>
         </button>
         <h2 class="popup__title">Оставить заявку</h2>
-        <form action="#" class="popup__request">
+        <form action="#" id="request-form" class="popup__request">
           <div class="popup__form-item">
-            <input autocomplete="off" type="text" name="Имя" placeholder="Ваше имя" class="input" />
+            <input
+              autocomplete="off"
+              type="text"
+              name="Имя"
+              placeholder="Ваше имя"
+              class="input input--name" />
           </div>
           <div class="popup__form-item popup__form-item--tel">
             <span>+7</span>
@@ -19,21 +24,21 @@
               type="tel"
               name="Номер телефона"
               placeholder="(___) ___-__-__"
-              class="input" />
+              class="input input--phone" />
           </div>
           <div class="popup__form-item">
             <textarea
               autocomplete="off"
               name="Сообщение клиента"
               placeholder="Текст сообщения"
-              class="input"></textarea>
+              class="input input--message"></textarea>
           </div>
-          <div class="popup__form-item">
+          <div class="popup__form-item popup__form-item--checkbox">
             <div class="popup__checkbox checkbox">
               <input
                 id="c_1"
                 checked
-                class="checkbox__input"
+                class="checkbox__input input-check"
                 type="checkbox"
                 value="Согласен"
                 name="Согласие на ОПД" />
@@ -65,9 +70,14 @@
           </svg>
         </button>
         <h2 class="popup__title">Задать вопрос</h2>
-        <form action="#" class="popup__request">
+        <form action="#" id="question-form" class="popup__request">
           <div class="popup__form-item">
-            <input autocomplete="off" type="text" name="Имя" placeholder="Ваше имя" class="input" />
+            <input
+              autocomplete="off"
+              type="text"
+              name="Имя"
+              placeholder="Ваше имя"
+              class="input input--name" />
           </div>
           <div class="popup__form-item popup__form-item--tel">
             <span>+7</span>
@@ -76,21 +86,21 @@
               type="tel"
               name="Номер телефона"
               placeholder="(___) ___-__-__"
-              class="input" />
+              class="input input--phone" />
           </div>
           <div class="popup__form-item">
             <textarea
               autocomplete="off"
               name="Вопрос клиента"
               placeholder="Задать вопрос"
-              class="input"></textarea>
+              class="input input--question"></textarea>
           </div>
-          <div class="popup__form-item">
+          <div class="popup__form-item popup__form-item--checkbox">
             <div class="popup__checkbox checkbox">
               <input
                 id="c_2"
                 checked
-                class="checkbox__input"
+                class="checkbox__input input-check"
                 type="checkbox"
                 value="Согласен"
                 name="Согласие на ОПД" />
@@ -128,7 +138,7 @@
         <div class="popup__descr">
           <p>и специалист по Новостройкам направит подходящие вам варианты.</p>
         </div>
-        <form action="#" class="popup__request">
+        <form action="#" id="recall-form" class="popup__request">
           <div class="popup__form-item popup__form-item--tel">
             <span>+7</span>
             <input
@@ -136,14 +146,14 @@
               type="tel"
               name="Номер телефона"
               placeholder="(___) ___-__-__"
-              class="input" />
+              class="input input--phone" />
           </div>
-          <div class="popup__form-item">
+          <div class="popup__form-item popup__form-item--checkbox">
             <div class="popup__checkbox checkbox">
               <input
                 id="c_3"
                 checked
-                class="checkbox__input"
+                class="checkbox__input input-check"
                 type="checkbox"
                 value="Согласен"
                 name="Согласие на ОПД" />
@@ -558,7 +568,7 @@
               </div>
               <div class="quiz__buttons">
                 <button class="quiz__prev" type="button">Назад</button>
-                <button disabled="true" class="quiz__next button _reverse" type="submit">
+                <button disabled="true" class="quiz__next button _reverse" type="button">
                   <span>Далее</span>
                   <svg width="14" height="8">
                     <use xlink:href="@img/svgicons/icons.svg#quiz-arrow" />
@@ -568,6 +578,27 @@
             </div>
           </form>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="reminder" aria-hidden="true" class="popup">
+  <div class="popup__wrapper">
+    <div class="popup__content">
+      <div class="popup__body popup__body--bg" style="background-image: url('@img/popup/bg.png')">
+        <button data-close type="button" class="popup__close">
+          <svg width="26" height="26">
+            <use xlink:href="@img/svgicons/icons.svg#close" />
+          </svg>
+        </button>
+        <h2 class="popup__title popup__title">Не нашли подходящий вариант?</h2>
+        <div class="popup__descr">
+          <p>Ответьте на 7 вопросов и получите индивидуальную подборку от наших специалистов</p>
+        </div>
+        <button data-popup="#quiz" class="popup__button button _reverse">
+          <span>Пройти опрос</span>
+        </button>
       </div>
     </div>
   </div>

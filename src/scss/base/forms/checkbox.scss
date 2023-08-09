@@ -65,6 +65,7 @@
     font-size: rem(12);
     font-weight: 600;
     letter-spacing: 1.8px;
+    transition: color 0.32s ease-in-out;
 
     a {
       transition: border-color 0.32s ease-in-out;
@@ -82,6 +83,10 @@
       font-size: rem(10);
     }
   }
+
+  .just-validate-error-label {
+    display: none;
+  }
 }
 
 .checkbox__input:focus + .checkbox__label:before,
@@ -91,4 +96,9 @@
 .checkbox__input:checked + .checkbox__label:after,
 .option__input:checked + .option__label::after {
   transform: scale(1);
+}
+.checkbox__input.just-validate-error-field + .checkbox__label {
+  &::before {
+    border-color: rgb(184, 17, 17);
+  }
 }
