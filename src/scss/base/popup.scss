@@ -384,6 +384,16 @@ body::after {
       visibility: hidden;
       transform: scale(0);
       transition: all 0.32s ease-in-out;
+
+      //== 576px ==//
+      @media (max-width: $mb-m) {
+        top: rem(20);
+        right: rem(20);
+      }
+      //== 370px ==//
+      @media (max-width: $mb-xs) {
+        right: rem(10);
+      }
     }
 
     &.popup__form-item--error::after {
