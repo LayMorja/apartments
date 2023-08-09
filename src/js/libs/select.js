@@ -1,6 +1,8 @@
 // Подключение функционала "Чертогов Фрилансера"
+import '@scss/vendors/datepicker.scss';
+import datepicker from 'js-datepicker';
 import { formValidate } from '../files/forms/forms.js';
-import { FLS, _slideDown, _slideToggle, _slideUp, isMobile } from '../files/functions.js';
+import { FLS, isMobile, _slideDown, _slideToggle, _slideUp } from '../files/functions.js';
 import { flsModules } from '../files/modules.js';
 
 // Подключение файла стилей
@@ -42,6 +44,24 @@ data-href-blank - откроет ссылку в новом окне
 // Возможные доработки:
 попап на мобилке
 */
+
+const workItems = Array.from(document.querySelectorAll('.item-variants'));
+const currentFilter = {};
+
+const filterItems = function (items) {
+  items.forEach(item => {
+    // Смотрим по каждому пункту фильтра
+    for (let key in currentFilter) {
+      // Если выбран плейсхолдер - скипаем
+      if (!currentFilter[key]) continue;
+      // Если внутри элемента нет значения, скрываем его
+      if (!item.dataset[key].split(',').includes(currentFilter[key])) {
+        item.hidden = true;
+        break;
+      }
+    }
+  });
+};
 
 // Класс построения Select
 class SelectConstructor {
@@ -576,21 +596,19 @@ class SelectConstructor {
   }
   // Обработчик изменения в селекте
   setSelectChange(originalSelect) {
-    // Моментальная валидация селекта
-    if (originalSelect.hasAttribute('data-validate')) {
-      formValidate.validateInput(originalSelect);
-    }
-    // При изменении селекта отправляем форму
-    if (originalSelect.hasAttribute('data-submit') && originalSelect.value) {
-      let tempButton = document.createElement('button');
-      tempButton.type = 'submit';
-      originalSelect.closest('form').append(tempButton);
-      tempButton.click();
-      tempButton.remove();
-    }
-    const selectItem = originalSelect.parentElement;
-    // Вызов коллбэк функции
-    this.selectCallback(selectItem, originalSelect);
+    // Выбранный филтр
+    const filterType = originalSelect.closest('[data-filter]').dataset.filter;
+    // Значение фильтра
+    currentFilter[filterType] = originalSelect.value;
+    localStorage.setItem('currentFilter', JSON.stringify(currentFilter));
+    // Видимые элементы
+    const visibleItems = workItems.filter(el => !el.classList.contains('item-variants--hidden'));
+
+    // "Показываем" все элементы
+    visibleItems.map(el => (el.hidden = false));
+
+    // Проходимся по элементам
+    filterItems(visibleItems);
   }
   // Обработчик disabled
   selectDisabled(selectItem, originalSelect) {
@@ -654,3 +672,55 @@ class SelectConstructor {
 }
 // Запускаем и добавляем в объект модулей
 flsModules.select = new SelectConstructor({});
+
+const target = document.querySelector('.variants__settings-item--date');
+const textTarget = target.children[0];
+
+const picker = datepicker(target, {
+  onSelect: instance => {
+    const selectedDate = new Intl.DateTimeFormat('ru').format(instance.dateSelected);
+    textTarget.textContent = selectedDate;
+
+    // Видимые элементы
+    const visibleItems = workItems.filter(el => !el.classList.contains('item-variants--hidden'));
+    // Что ищем?
+    const selectedMonth = instance.currentMonth;
+    const selectedYear = instance.currentYear;
+    // Определяем название фильтра
+    const dateFilter =
+      new Date(instance.dateSelected).getTime() - new Date(instance.startDate).getTime() <= 0
+        ? 'Дом сдан'
+        : selectedMonth >= 0 && selectedMonth < 3
+        ? `1 квартал ${selectedYear}`
+        : selectedMonth >= 3 && selectedMonth < 6
+        ? `2 квартал ${selectedYear}`
+        : selectedMonth >= 6 && selectedMonth < 9
+        ? `3 квартал ${selectedYear}`
+        : selectedMonth >= 9 && selectedMonth < 12
+        ? `4 квартал ${selectedYear}`
+        : null;
+    currentFilter.date = dateFilter;
+    localStorage.setItem('currentFilter', JSON.stringify(currentFilter));
+
+    // Ищем нужные элементы
+    filterItems(visibleItems);
+  },
+  startDay: 1,
+  customDays: ['Суб', 'Пон', 'Вт', 'Ср', 'Чт', 'Пт', 'Вс'],
+  customMonths: [
+    'Янв',
+    'Фев',
+    'Март',
+    'Апр',
+    'Май',
+    'Июнь',
+    'Июль',
+    'Авг',
+    'Сент',
+    'Окт',
+    'Ноябрь',
+    'Дек',
+  ],
+  overlayButton: 'Поиск',
+  overlayPlaceholder: 'Введите 4-значный год',
+});

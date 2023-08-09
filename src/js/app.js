@@ -106,7 +106,7 @@ import './libs/popup.js';
 import './libs/select.js';
 
 // Библиотека календаря
-import './libs/datepicker-full.min.js';
+// import './libs/datepicker-full.min.js';
 
 /* (В работе) Модуль работы с масками.*/
 /*

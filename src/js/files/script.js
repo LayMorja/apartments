@@ -49,7 +49,6 @@ const parentDir = document.querySelector('.parent-dir').textContent;
 
 document.addEventListener('DOMContentLoaded', () => {
   const map = document.querySelector('#map');
-  const upButton = document.querySelector('.contacts__up');
 
   const observerCb = function (entries, observer) {
     entries.forEach(entry => {
@@ -78,21 +77,61 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   };
-
   const observer = new IntersectionObserver(observerCb, {
     root: null,
     threshold: 0.2,
   });
-
   observer.observe(map);
 
-  upButton.addEventListener('click', () => {
+  document.querySelector('.contacts__up').addEventListener('click', () => {
     scrollTo({
       top: 0,
       left: 0,
       behavior: 'smooth',
     });
   });
+
+  const selects = document.querySelectorAll('.variants__settings-item select');
+  selects.forEach(sel => {
+    sel.addEventListener('submit', function (e) {
+      console.log(e);
+    });
+  });
+
+  const moreButton = document.querySelector('[data-works-more]');
+  const moreWorkBlocks = Array.from(document.querySelectorAll('.item-variants[hidden]'));
+  let lastIndex = 0;
+
+  if (!moreWorkBlocks) {
+    moreButton.hidden = true;
+    return;
+  }
+
+  const loadMoreBlocks = function () {
+    moreWorkBlocks.slice(lastIndex, lastIndex + 3).map(el => {
+      const currentFilter = JSON.parse(localStorage.getItem('currentFilter'));
+      let flag = true;
+      for (let key in currentFilter) {
+        // Если выбран плейсхолдер - скипаем
+        if (!currentFilter[key]) continue;
+        // Если внутри элемента нет значения, скрываем его
+        console.log(key);
+        if (!el.dataset[key].split(',').includes(currentFilter[key])) {
+          flag = false;
+        }
+      }
+      flag ? (el.hidden = false) : null;
+      el.classList.remove('item-variants--hidden');
+    });
+    lastIndex += 3;
+
+    if (lastIndex >= moreWorkBlocks.length) {
+      moreButton.hidden = true;
+      moreButton.removeEventListener('click', loadMoreBlocks);
+    }
+  };
+
+  moreButton.addEventListener('click', loadMoreBlocks);
 });
 
 const mapButton = document.querySelector('#map-button');
@@ -117,6 +156,7 @@ mapButton.addEventListener('click', () => {
 
     workItems.forEach(function (item) {
       const title = item.querySelector('.item-variants__title').textContent;
+      const imageSource = item.querySelector('img').src;
       const descriptionItems = item.querySelectorAll(
         '.item-variants__info-table-row > *:last-child'
       );
@@ -125,7 +165,7 @@ mapButton.addEventListener('click', () => {
         .textContent.split(', ')
         .map(el => parseFloat(el));
 
-      const popupHTML = `<div class="modal-work" data-popup="#work"><div class="modal-work__content"><div class="modal-work__image"><img src="img/works/01.png" alt="" /></div><div class="modal-work__body"><h3 class="modal-work__title">${title}</h3><ul class="modal-work__list"><li class="modal-work__item"><span class="modal-work__type">Срок сдачи</span><span class="modal-work__value">${descriptionItems[0].textContent}</span></li><li class="modal-work__item"><span class="modal-work__type">Ипотека</span><span class="modal-work__value">${descriptionItems[1].textContent}</span></li><li class="modal-work__item"><span class="modal-work__type">Застройщик</span><span class="modal-work__value">${descriptionItems[2].textContent}</span></li></ul></div></div><div class="modal-work__activities"><button type="button" data-popup="#work" class="modal-work__more">Подробнее</button><button type="button" data-popup="#recall" class="modal-work__popup button"><span>Записаться на просмотр</span></button></div></div>`;
+      const popupHTML = `<div class="modal-work" data-popup="#work"><div class="modal-work__content"><div class="modal-work__image"><img src="${imageSource}" alt="" /></div><div class="modal-work__body"><h3 class="modal-work__title">${title}</h3><ul class="modal-work__list"><li class="modal-work__item"><span class="modal-work__type">Срок сдачи</span><span class="modal-work__value">${descriptionItems[0].textContent}</span></li><li class="modal-work__item"><span class="modal-work__type">Ипотека</span><span class="modal-work__value">${descriptionItems[1].textContent}</span></li><li class="modal-work__item"><span class="modal-work__type">Застройщик</span><span class="modal-work__value">${descriptionItems[2].textContent}</span></li></ul></div></div><div class="modal-work__activities"><button type="button" data-popup="#work" class="modal-work__more">Подробнее</button><button type="button" data-popup="#recall" class="modal-work__popup button"><span>Записаться на просмотр</span></button></div></div>`;
 
       const popup = L.popup({
         content: popupHTML,
