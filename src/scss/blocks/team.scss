@@ -229,21 +229,27 @@
 
   &__image {
     pointer-events: none;
-    min-height: rem(270);
-    @extend %ibg;
-    transition: min-height 0.42s ease-in-out;
 
     img {
+      width: 100%;
+      height: rem(270);
+
+      object-fit: cover;
       object-position: center top;
       border-radius: rem(30);
+      transition: height 0.32s ease-in-out;
     }
 
     .swiper-slide-active & {
-      min-height: rem(570);
+      img {
+        height: rem(570);
+      }
 
       //== 992px ==//
       @media (max-width: $tb) {
-        min-height: 0;
+        img {
+          min-height: 0;
+        }
       }
     }
 
