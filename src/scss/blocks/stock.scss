@@ -32,27 +32,14 @@
   }
 
   &__item {
-    overflow: hidden;
     position: relative;
+    overflow: hidden;
     min-height: rem(384);
     border-radius: rem(80);
     @extend %bg-cov;
     display: flex;
     justify-content: flex-end;
     box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15);
-
-    &::before {
-      content: '';
-      position: absolute;
-      right: -48%;
-      bottom: rem(180);
-      width: rem(826);
-      height: rem(441);
-      transform: rotate(-43.382deg);
-      border-radius: rem(500);
-      background-color: var(--c);
-      transition: transform 0.52s ease-in-out;
-    }
 
     .decor-angle {
       height: 90%;
@@ -65,7 +52,7 @@
 
     @media (any-hover: hover) {
       &:hover {
-        &::before {
+        .stock__content::before {
           transform: scale(2);
         }
         .stock__content {
@@ -80,11 +67,11 @@
         }
         //== 768px ==//
         @media (max-width: $mb) {
-          &::before {
+          .stock__content::before {
             transform: scale(4);
           }
           .stock__content {
-            transform: translate(-55%, 10%) scale(1.4);
+            transform: translate(-40%, 10%) scale(1.4);
           }
         }
         //== 576px ==//
@@ -95,70 +82,22 @@
         }
       }
     }
-
-    //== 1200px ==//
-    @media (max-width: $note-m) {
-      &::before {
-        width: rem(630);
-        height: rem(420);
-        bottom: rem(120);
-        right: -35%;
-      }
-    }
     //== 992px ==//
     @media (max-width: $tb) {
       min-height: rem(360);
-      &::before {
-        width: rem(520);
-        height: rem(360);
-        right: -45%;
-        bottom: rem(110);
-      }
     }
     //== 768px ==//
     @media (max-width: $mb) {
       min-height: rem(340);
-      &::before {
-        content: '';
-        right: -20%;
-      }
     }
     //== 576px ==//
     @media (max-width: $mb-m) {
       min-height: rem(320);
-      &::before {
-        content: '';
-        bottom: rem(140);
-        right: -25%;
-        width: rem(380);
-        height: rem(240);
-      }
-    }
-    @media (max-width: em(479.98)) {
-      &::before {
-        right: -30%;
-      }
     }
     //== 440px ==//
     @media (max-width: $mb-s) {
       min-height: rem(180);
       border-radius: rem(30);
-      &::before {
-        height: rem(204);
-        bottom: rem(70);
-        right: -35%;
-      }
-    }
-    @media (max-width: em(399.98)) {
-      &::before {
-        right: -41%;
-      }
-    }
-    //== 370px ==//
-    @media (max-width: $mb-xs) {
-      &::before {
-        right: -43%;
-      }
     }
   }
 
@@ -185,10 +124,38 @@
       padding-bottom: rem(120);
     }
 
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      left: -25%;
+      bottom: 40%;
+      width: 200%;
+      height: 120%;
+      transform: rotate(-43.382deg);
+      border-radius: rem(500);
+      background-color: var(--c);
+      transition: transform 0.52s ease-in-out;
+    }
+
+    //== 1200px ==//
+    @media (max-width: $note-m) {
+      &::before {
+        width: 150%;
+        height: 110%;
+        left: -15%;
+        bottom: 30%;
+      }
+    }
     //== 992px ==//
     @media (max-width: $tb) {
       flex: 0 0 rem(310);
       font-size: rem(22);
+      &::before {
+        height: 100%;
+        left: -15%;
+        bottom: 20%;
+      }
 
       &.stock__content--single {
         flex: 0 0 rem(290);
@@ -197,11 +164,20 @@
     //== 768px ==//
     @media (max-width: $mb) {
       font-size: rem(18);
+      &::before {
+        bottom: 30%;
+      }
     }
     //== 576px ==//
     @media (max-width: $mb-m) {
       flex: 0 0 rem(200);
       font-size: rem(16);
+      &::before {
+        width: 200%;
+        height: 80%;
+        left: -35%;
+        bottom: 35%;
+      }
 
       &.stock__content--single {
         flex: 0 0 rem(190);
@@ -211,6 +187,11 @@
     @media (max-width: $mb-s) {
       font-size: rem(14);
       padding-top: rem(40);
+      &::before {
+        height: 120%;
+        left: -25%;
+        bottom: 39%;
+      }
 
       &.stock__content--single {
         padding-bottom: rem(50);
