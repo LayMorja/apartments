@@ -34,12 +34,12 @@
         </div>
       </div>
       <div class="contacts__up-block">
-        <button type="button" class="contacts__up">
-          <div class="contacts__up-icon">
+        <button type="button" class="contacts__up" aria-label="Подняться наверх" role="button">
+          <span class="contacts__up-icon">
             <svg width="9" height="14">
               <use xlink:href="@img/svgicons/icons.svg#arrow-top" />
             </svg>
-          </div>
+          </span>
           <span class="contacts__up-descr">подняться вверх</span>
         </button>
       </div>
@@ -54,7 +54,11 @@
       <span class="footer__copyrights">Все права защищены © 2023</span>
       <div class="footer__developer">
         <span>Сайт разработан</span>
-        <a href="javascript:void(0);" class="footer__logo">
+        <a
+          href="javascript:void(0);"
+          class="footer__logo"
+          aria-label="Перейти на сайт разработчика"
+          role="link">
           <svg width="155" height="47">
             <use xlink:href="@img/svgicons/icons.svg#afreeca" />
           </svg>

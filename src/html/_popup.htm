@@ -548,16 +548,26 @@
 
             <div class="quiz__slider swiper">
               <div class="quiz__wrapper swiper-wrapper"></div>
-              <div hidden class="swiper-button-prev">
+              <button
+                type="button"
+                role="button"
+                aria-label="Предыдущий слайд"
+                hidden
+                class="swiper-button-prev">
                 <svg width="8" height="13">
                   <use xlink:href="@img/svgicons/icons.svg#arrow-left-small" />
                 </svg>
-              </div>
-              <div hidden class="swiper-button-next">
+              </button>
+              <button
+                type="button"
+                role="button"
+                aria-label="Следующий слайд"
+                hidden
+                class="swiper-button-next">
                 <svg width="8" height="13">
                   <use xlink:href="@img/svgicons/icons.svg#arrow-right-small" />
                 </svg>
-              </div>
+              </button>
             </div>
             <div class="quiz__add"></div>
             <div class="quiz__activities">
@@ -568,7 +578,7 @@
               </div>
               <div class="quiz__buttons">
                 <button class="quiz__prev" type="button">Назад</button>
-                <button disabled="true" class="quiz__next button _reverse" type="button">
+                <button disabled class="quiz__next button _reverse" type="button">
                   <span>Далее</span>
                   <svg width="14" height="8">
                     <use xlink:href="@img/svgicons/icons.svg#quiz-arrow" />
