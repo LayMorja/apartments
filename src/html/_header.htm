@@ -1,11 +1,11 @@
 <header class="header" data-scroll-show>
   <div class="header__wrapper">
     <div class="header__container container">
-      <a href="" class="header__logo logo">
-        <img src="@img/logo.svg" alt="" class="logo__icon" />
+      <a class="header__logo logo" aria-label="Компании по работе с недвижимостью 'Apartments'">
+        <img src="@img/logo.svg" alt="Логотип компании Apartments" class="logo__icon" />
       </a>
       <div class="header__menu menu">
-        <nav class="menu__body">
+        <nav class="menu__body" title="Главная навигация">
           <ul class="menu__list">
             <li class="menu__item">
               <a href="javascript:void(0);" data-goto="#about" data-goto-header class="menu__link"
@@ -43,7 +43,6 @@
               <span>Перезвоните мне</span>
             </button>
           </div>
-          <div class="menu__close"><span></span><span></span></div>
         </nav>
       </div>
       <div class="header__callback callback">
@@ -55,7 +54,11 @@
           <img src="@img/icons/whatsapp.svg" alt="Связаться с нами в WhatsApp" />
         </a>
       </div>
-      <button type="button" class="menu__icon icon-menu"></button>
+      <button
+        type="button"
+        aria-label="Открыть/закрыть меню"
+        role="button"
+        class="menu__icon icon-menu"></button>
     </div>
   </div>
 </header>

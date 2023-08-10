@@ -489,14 +489,6 @@ export function menuInit() {
         bodyLockToggle();
         document.documentElement.classList.toggle('menu-open');
       }
-      if (
-        bodyLockStatus &&
-        !e.target.closest('.menu') &&
-        !document.documentElement.classList.contains('popup-show') &&
-        !document.documentElement.classList.contains('lg-on')
-      ) {
-        menuClose();
-      }
     });
   }
 }
