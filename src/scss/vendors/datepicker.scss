@@ -117,6 +117,7 @@
   flex-shrink: 0;
   background: var(--clr-title);
   border-radius: 4px;
+  height: 2em;
   color: var(--clr-white);
   filter: blur(0);
   transition: filter 0.3s;
@@ -182,6 +183,7 @@
   color: var(--clr-main);
   flex-wrap: wrap;
   padding: 0.3125em;
+  gap: 2px;
   filter: blur(0);
   transition: filter 0.3s;
   transition: filter 0.3s;
@@ -190,8 +192,8 @@
   filter: blur(5px);
 }
 .qs-datepicker .qs-square {
-  width: 14.28571%;
-  height: 1.5625em;
+  width: calc(100% / 7 - 2px);
+  height: 2.2em;
   display: flex;
   align-items: center;
   justify-content: center;
