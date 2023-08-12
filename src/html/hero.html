@@ -20,12 +20,11 @@
       </button>
     </div>
     <picture class="parallax-background">
-      <source media="(min-width: 579px)" srcset="@img/hero/background.png" />
-      <img
-        src="@img/hero/background--mobile.png"
-        alt=""
-        aria-hidden="true"
-        class="parallax-image" />
+      <source media="(min-width: 579px)" srcset="img/hero/background.webp" type="image/webp" />
+      <source media="(min-width: 579px)" srcset="img/hero/background.jpg" type="image/jpeg" />
+      <source srcset="img/hero/background--mobile.webp" type="image/webp" />
+      <source srcset="img/hero/background--mobile.jpg" type="image/jpeg" />
+      <img src="img/hero/background--mobile.jpg" alt="" aria-hidden="true" class="parallax-image" />
     </picture>
   </div>
 </section>
