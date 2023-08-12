@@ -705,6 +705,12 @@ const picker = datepicker(target, {
     // Ищем нужные элементы
     filterItems(visibleItems);
   },
+  onShow: instance => {
+    !instance.el.classList.contains('_show') ? instance.el.classList.add('_show') : null;
+  },
+  onHide: instance => {
+    instance.el.classList.contains('_show') ? instance.el.classList.remove('_show') : null;
+  },
   startDay: 1,
   customDays: ['Суб', 'Пон', 'Вт', 'Ср', 'Чт', 'Пт', 'Вс'],
   customMonths: [
