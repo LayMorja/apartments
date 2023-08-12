@@ -138,12 +138,27 @@
     }
 
     .tabs__content {
+      position: relative;
       min-height: rem(781);
       width: 100%;
       border-radius: rem(80);
       padding: rem(66) rem(59) rem(128);
       @extend %bg-cov;
-      background-image: url('@img/faq/image.png');
+      background-image: url('@img/faq/image.jpg');
+
+      &::before {
+        content: '';
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        transform: translateY(-50%);
+        width: rem(41);
+        height: rem(164);
+        left: 0;
+        background-image: url('data:image/svg+xml, %3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2241%22%20height%3D%22164%22%20viewBox%3D%220%200%2041%20164%22%20fill%3D%22%23F2F3F8%22%3E%3Cpath%20d%3D%22M0.275658%200.5V29.002C0.275658%2047.834%2010.4575%2065.1944%2026.8937%2074.3865L41%2082.2757H-57L0.275658%200.5Z%22%20fill%3D%22%23F2F3F8%22%2F%3E%3Cpath%20d%3D%22M0.275658%20163.776V135.274C0.275658%20116.442%2010.4575%2099.0813%2026.8937%2089.8891L41%2082H-57L0.275658%20163.776Z%22%20fill%3D%22%23F2F3F8%22%2F%3E%3C%2Fsvg%3E');
+        background-repeat: no-repeat;
+        background-size: rem(41) rem(164);
+      }
 
       //== 1200px ==//
       @media (max-width: $note-m) {
@@ -155,11 +170,16 @@
         padding: 0;
         min-height: none;
         background-image: none;
+
+        &::before {
+          display: none;
+        }
       }
     }
   }
 }
 .answer {
+  position: relative;
   @extend %bg-cov;
   background-color: var(--clr-white);
   padding: rem(44) rem(40) rem(45) rem(52);
@@ -174,10 +194,23 @@
   @media (max-width: $tb) {
     padding: rem(40) rem(20) rem(25);
     border-radius: 0;
-    background-image: url('@img/faq/image-mobile.png');
-
+    background-image: url('@img/faq/image-mobile.jpg');
     &:not(:last-child) {
       margin-bottom: rem(20);
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: 2;
+      width: rem(76);
+      height: rem(37);
+      top: rem(-10);
+      left: 50%;
+      transform: translateX(-50%);
+      background-size: 76px 37px;
+      left: 50%;
+      background-image: url('data:image/svg+xml, %3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2276%22%20height%3D%2220%22%20viewBox%3D%220%200%2076%2020%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M75.5703%200.328251L62.3933%200.328251C53.6869%200.328251%2045.6609%205.03552%2041.4112%2012.6343L37.7639%2019.1559L37.7639%20-26.1514L75.5703%200.328251Z%22%20fill%3D%22%23F2F3F8%22%2F%3E%3Cpath%20d%3D%22M0.0849078%200.328252L13.2619%200.328252C21.9683%200.328252%2029.9943%205.03552%2034.244%2012.6343L37.8913%2019.1559L37.8913%20-26.1514L0.0849078%200.328252Z%22%20fill%3D%22%23F2F3F8%22%2F%3E%3C%2Fsvg%3E');
     }
   }
   //== 768px ==//

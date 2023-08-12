@@ -70,6 +70,7 @@
 
 .variants {
   &__settings {
+    position: relative;
     display: flex;
 
     &:not(:last-child) {
@@ -93,6 +94,7 @@
     }
 
     &.variants__settings-item--date {
+      position: relative;
       cursor: pointer;
       @extend %fl-r-ctb;
       text-align: left;
@@ -105,12 +107,17 @@
       font-weight: 600;
       letter-spacing: 1.8px;
 
-      span {
+      span,
+      svg {
         pointer-events: none;
       }
 
       svg {
         fill: #d8ebf6;
+      }
+
+      &._show {
+        pointer-events: none;
       }
     }
   }
