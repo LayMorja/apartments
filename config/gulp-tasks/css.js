@@ -1,6 +1,7 @@
 import autoprefixer from 'gulp-autoprefixer';
 import cleanCss from 'gulp-clean-css';
 import groupCssMediaQueries from 'gulp-group-css-media-queries';
+import webpcss from 'gulp-webpcss';
 
 export const css = () => {
   return app.gulp
@@ -24,6 +25,19 @@ export const css = () => {
         })
       )
     )
+    .pipe(
+      app.plugins.if(
+        app.isWebP,
+        app.plugins.if(
+          app.isBuild,
+          webpcss({
+            webpClass: '.webp',
+            noWebpClass: '.no-webp',
+          })
+        )
+      )
+    )
+    .pipe(app.plugins.if(app.isBuild, app.gulp.dest(app.path.build.css)))
     .pipe(app.plugins.if(app.isBuild, cleanCss()))
     .pipe(app.plugins.rename({ suffix: '.min' }))
     .pipe(app.gulp.dest(app.path.build.css));
