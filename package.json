@@ -52,7 +52,7 @@
     "html-webpack-plugin": "latest",
     "load-plugins": "latest",
     "mini-css-extract-plugin": "2.4.7",
-    "sass": "latest",
+    "sass": "^1.64.2",
     "sass-loader": "latest",
     "string-replace-loader": "latest",
     "style-loader": "latest",
