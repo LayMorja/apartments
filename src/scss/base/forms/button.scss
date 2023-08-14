@@ -28,6 +28,16 @@
       }
     }
   }
+  &:focus {
+    outline: none;
+    background-color: var(--clr-red);
+    border-color: var(--clr-red);
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.15);
+
+    span {
+      color: var(--clr-white);
+    }
+  }
   &._fw {
     width: 100%;
   }
@@ -50,6 +60,16 @@
         }
       }
     }
+    &:focus {
+      outline: none;
+      background-color: transparent;
+      border-color: var(--clr-purple);
+      box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.15);
+
+      span {
+        color: var(--clr-purple);
+      }
+    }
   }
   &._fill {
     background-color: var(--clr-purple);
@@ -68,6 +88,16 @@
         span {
           color: var(--clr-purple);
         }
+      }
+    }
+    &:focus {
+      outline: none;
+      background-color: transparent;
+      border-color: var(--clr-purple);
+      box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.15);
+
+      span {
+        color: var(--clr-purple);
       }
     }
   }

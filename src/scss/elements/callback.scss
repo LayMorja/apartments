@@ -31,6 +31,13 @@
         }
       }
     }
+    &:focus {
+      &::before {
+        transform: scale(1.1);
+      }
+      outline: 1px solid var(--clr-purple);
+      border-radius: 2px;
+    }
   }
 
   &__modal {

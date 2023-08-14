@@ -30,11 +30,16 @@
       letter-spacing: 0.6px;
       text-transform: uppercase;
       transition: color 0.32s ease-in-out;
-
       @media (any-hover: hover) {
         &:hover {
           color: var(--clr-red);
         }
+      }
+
+      &:focus {
+        outline: 1px solid var(--clr-main);
+        border-radius: 2px;
+        color: var(--clr-red);
       }
     }
 
@@ -127,6 +132,7 @@
       bottom: 0;
       animation: menu07-bar03 0.55s forwards;
     }
+
     .menu-open & {
       &::before {
         animation: active-menu07-bar01 0.55s forwards;

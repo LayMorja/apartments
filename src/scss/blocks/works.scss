@@ -37,6 +37,10 @@
         color: var(--clr-red);
         border-bottom-color: var(--clr-red);
       }
+      &:focus {
+        outline: none;
+        border-bottom-color: var(--clr-red);
+      }
 
       &:not(:last-child) {
         margin-right: rem(20);
@@ -91,6 +95,10 @@
     @media (max-width: $mb) {
       width: 100%;
       min-height: rem(76);
+    }
+
+    > *:focus {
+      outline: none;
     }
 
     &.variants__settings-item--date {
@@ -379,6 +387,11 @@
         color: var(--clr-red);
         border-bottom-color: transparent;
       }
+    }
+    &:focus {
+      outline: none;
+      color: var(--clr-red);
+      border-bottom-color: transparent;
     }
     //== 1200px ==//
     @media (max-width: $note-m) {

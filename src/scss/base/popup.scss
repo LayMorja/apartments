@@ -257,9 +257,15 @@ body::after {
     position: absolute;
     top: rem(46);
     right: rem(51);
+    transition: transform 0.32s ease-in-out;
 
     svg {
       fill: var(--clr-main);
+    }
+
+    &:focus {
+      outline: none;
+      transform: scale(1.05);
     }
 
     //== 768px ==//
