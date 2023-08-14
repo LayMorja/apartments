@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   observer.observe(map);
 
-  const section = document.querySelector('.reviews');
+  const section = document.querySelector('.faq');
   const modalObserverCb = function (entries, observer) {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
